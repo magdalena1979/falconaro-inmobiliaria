@@ -1,122 +1,81 @@
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { AuthPage } from './components/AuthPage'
+import { Dashboard } from './components/Dashboard'
+import { EmptyState } from './components/EmptyState'
+import { EntityPage } from './components/EntityPage'
+import { Layout } from './components/Layout'
+import { Reports } from './components/Reports'
+import { getModule, modules } from './config/modules'
+import { useAuth } from './hooks/useAuth'
+import { signOut } from './services/auth'
+import { isSupabaseConfigured } from './services/supabase/client'
+import type { ModuleKey } from './services/supabase/types'
+import { appTheme } from './theme'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [active, setActive] = useState<ModuleKey>('dashboard')
+  const auth = useAuth()
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <ThemeProvider theme={appTheme}>
+      <CssBaseline enableColorScheme />
+      {!isSupabaseConfigured ? (
+        <Layout
+          active={active}
+          modules={modules}
+          onNavigate={setActive}
+          onSignOut={handleSignOut}
+          userEmail={auth.user?.email}
+          userRole={auth.profile?.role}
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <EmptyState
+            title="Faltan credenciales de Supabase"
+            description="Configura VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY para consumir las tablas configuradas."
+            severity="warning"
+          />
+        </Layout>
+      ) : auth.isLoading ? (
+        <div className="auth-shell">
+          <EmptyState title="Cargando sesion" description="Verificando tu acceso al sistema." />
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+      ) : auth.isPasswordRecovery ? (
+        <AuthPage mode="recovery" onPasswordUpdated={auth.finishPasswordRecovery} />
+      ) : !auth.session ? (
+        <AuthPage mode="login" />
+      ) : !['superadmin', 'admin'].includes(auth.profile?.role ?? '') ? (
+        <div className="auth-shell">
+          <EmptyState
+            title="Sin permisos de administrador"
+            description="Tu usuario existe, pero todavia no tiene rol admin o superadmin para entrar al panel."
+            severity="warning"
+          />
         </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      ) : (
+        <Layout
+          active={active}
+          modules={modules}
+          onNavigate={setActive}
+          onSignOut={handleSignOut}
+          userEmail={auth.user?.email}
+          userRole={auth.profile?.role}
+        >
+          {active === 'dashboard' ? (
+            <Dashboard modules={modules} />
+          ) : active === 'reports' ? (
+            <Reports />
+          ) : (
+            <EntityPage module={getModule(active)} />
+          )}
+        </Layout>
+      )}
+    </ThemeProvider>
   )
+
+  async function handleSignOut() {
+    await signOut()
+    setActive('dashboard')
+  }
 }
 
 export default App
