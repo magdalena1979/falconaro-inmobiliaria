@@ -39,7 +39,12 @@ export function Layout({ active, modules, onNavigate, onSignOut, userEmail, user
     <Box className="app-shell">
       <Box component="aside" className="sidebar">
         <Box className="brand">
-          <Typography variant="h6">Falconaro</Typography>
+          <Box
+            alt="Falconaro Servicios Inmobiliarios"
+            className="brand-logo"
+            component="img"
+            src="/images/logo.jpg"
+          />
           <Typography variant="caption">Gestion inmobiliaria</Typography>
         </Box>
         <Box className="sidebar-scroll">

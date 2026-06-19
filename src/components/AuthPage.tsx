@@ -31,7 +31,13 @@ export function AuthPage({ mode, onPasswordUpdated }: AuthPageProps) {
     <Box className="auth-shell">
       <Paper className="auth-card" variant="outlined">
         <Stack spacing={3}>
-          <Box>
+          <Box className="auth-brand">
+            <Box
+              alt="Falconaro Servicios Inmobiliarios"
+              className="auth-logo"
+              component="img"
+              src="/images/logo.jpg"
+            />
             <Typography variant="overline">Falconaro</Typography>
             <Typography variant="h4">
               {isRecovery ? 'Actualizar contrasena' : view === 'forgot' ? 'Recuperar acceso' : 'Ingresar'}
