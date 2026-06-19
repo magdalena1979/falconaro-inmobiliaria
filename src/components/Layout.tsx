@@ -1,10 +1,13 @@
-import { Box, Button, Divider, Stack, Typography } from '@mui/material'
+import { Avatar, Box, Button, Divider, Menu, MenuItem, Stack, Typography } from '@mui/material'
+import { useState } from 'react'
 import type { ModuleDefinition, ModuleKey } from '../services/supabase/types'
 
 interface LayoutProps {
-  active: ModuleKey
+  active: ModuleKey | 'profile'
   modules: ModuleDefinition[]
   onNavigate: (key: ModuleKey) => void
+  onOpenProfile: () => void
+  onOpenTeam: () => void
   onSignOut: () => void
   userEmail?: string
   userRole?: string
@@ -21,9 +24,9 @@ const mainNavItems: Array<{ key: ModuleKey; label: string }> = [
   { key: 'ownerCollections', label: 'Liquidaciones' },
   { key: 'agenda', label: 'Agenda' },
   { key: 'reports', label: 'Reportes' },
+  { key: 'userRoles', label: 'Equipo' },
   { key: 'contractOwners', label: 'Contrato propietarios' },
   { key: 'contractTenants', label: 'Contrato inquilinos' },
-  { key: 'userRoles', label: 'Usuarios y roles' },
   { key: 'employees', label: 'Empleados' },
 ]
 
@@ -34,7 +37,20 @@ const configNavItems: Array<{ key: ModuleKey; label: string }> = [
   { key: 'updateTypes', label: 'Actualizacion' },
 ]
 
-export function Layout({ active, modules, onNavigate, onSignOut, userEmail, userRole, children }: LayoutProps) {
+export function Layout({
+  active,
+  modules,
+  onNavigate,
+  onOpenProfile,
+  onOpenTeam,
+  onSignOut,
+  userEmail,
+  userRole,
+  children,
+}: LayoutProps) {
+  const [accountAnchor, setAccountAnchor] = useState<HTMLElement | null>(null)
+  const isAccountMenuOpen = Boolean(accountAnchor)
+
   return (
     <Box className="app-shell">
       <Box component="aside" className="sidebar">
@@ -88,25 +104,90 @@ export function Layout({ active, modules, onNavigate, onSignOut, userEmail, user
           </Stack>
         </Box>
         <Divider sx={{ my: 2 }} />
-        {userEmail && (
-          <Box className="session-box">
-            <Typography variant="caption" color="text.secondary">
-              {userRole ?? 'user'}
-            </Typography>
-            <Typography variant="body2">{userEmail}</Typography>
-            <Button color="inherit" onClick={onSignOut} size="small">
-              Cerrar sesion
-            </Button>
-          </Box>
-        )}
-        <Divider sx={{ my: 2 }} />
         <Typography variant="caption" color="text.secondary">
           Supabase real, sin datos mock.
         </Typography>
       </Box>
-      <Box component="main" className="content">
-        {children}
+      <Box className="main-shell">
+        <Box component="header" className="topbar">
+          {userEmail && (
+            <>
+              <Button
+                aria-controls={isAccountMenuOpen ? 'account-menu' : undefined}
+                aria-expanded={isAccountMenuOpen ? 'true' : undefined}
+                aria-haspopup="true"
+                className="account-button"
+                color="inherit"
+                onClick={(event) => setAccountAnchor(event.currentTarget)}
+              >
+                <Avatar className="account-avatar">{avatarInitial(userEmail)}</Avatar>
+                <Box className="account-summary">
+                  <Typography variant="body2">{userEmail}</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {roleLabel(userRole)}
+                  </Typography>
+                </Box>
+              </Button>
+              <Menu
+                anchorEl={accountAnchor}
+                id="account-menu"
+                onClose={closeAccountMenu}
+                open={isAccountMenuOpen}
+                slotProps={{ paper: { className: 'account-menu-paper' } }}
+              >
+                <Box className="account-menu-header">
+                  <Avatar className="account-avatar account-avatar-large">{avatarInitial(userEmail)}</Avatar>
+                  <Box>
+                    <Typography variant="body2">{userEmail}</Typography>
+                    <Typography className="role-pill" variant="caption">
+                      {roleLabel(userRole)}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Divider />
+                <MenuItem onClick={openProfile}>Mi perfil</MenuItem>
+                <MenuItem onClick={openTeam}>Mi equipo</MenuItem>
+                <Divider />
+                <MenuItem className="account-signout-item" onClick={signOutFromMenu}>
+                  Cerrar sesion
+                </MenuItem>
+              </Menu>
+            </>
+          )}
+        </Box>
+        <Box component="main" className="content">
+          {children}
+        </Box>
       </Box>
     </Box>
   )
+
+  function closeAccountMenu() {
+    setAccountAnchor(null)
+  }
+
+  function openProfile() {
+    closeAccountMenu()
+    onOpenProfile()
+  }
+
+  function openTeam() {
+    closeAccountMenu()
+    onOpenTeam()
+  }
+
+  function signOutFromMenu() {
+    closeAccountMenu()
+    onSignOut()
+  }
+}
+
+function roleLabel(role: string | undefined): string {
+  if (role === 'superadmin') return 'Super administrador'
+  if (role === 'admin') return 'Administrador'
+  return 'Sin acceso al panel'
+}
+
+function avatarInitial(email: string): string {
+  return email.trim().charAt(0).toUpperCase() || 'U'
 }

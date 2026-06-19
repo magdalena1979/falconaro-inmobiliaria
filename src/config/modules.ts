@@ -333,9 +333,9 @@ export const modules: ModuleDefinition[] = [
   },
   {
     key: 'userRoles',
-    title: 'Usuarios y roles',
-    singular: 'usuario',
-    description: 'Alta y administracion de roles de acceso al sistema.',
+    title: 'Equipo',
+    singular: 'miembro del equipo',
+    description: 'Usuarios internos, invitaciones y roles de acceso al sistema.',
     table: {
       name: 'user_profiles',
       primaryKey: 'id',

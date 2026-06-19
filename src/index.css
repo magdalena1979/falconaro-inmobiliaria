@@ -92,17 +92,94 @@ body {
   padding-right: 2px;
 }
 
+.main-shell {
+  min-width: 0;
+  background: #f6f7f8;
+}
+
+.topbar {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(181, 183, 186, 0.55);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.account-button {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  max-width: min(100%, 360px);
+  padding: 6px 8px !important;
+  border: 1px solid rgba(181, 183, 186, 0.45) !important;
+  background: #ffffff !important;
+  color: #2C2C2C !important;
+}
+
+.account-avatar {
+  width: 34px !important;
+  height: 34px !important;
+  background: #C72028 !important;
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+
+.account-avatar-large {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.account-summary {
+  display: grid;
+  min-width: 0;
+  text-align: left;
+}
+
+.account-summary p,
+.account-summary span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-menu-paper {
+  min-width: 260px;
+}
+
+.account-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.account-signout-item {
+  color: #8f151b !important;
+}
+
+.role-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 5px 9px;
+  border: 1px solid rgba(199, 32, 40, 0.2);
+  border-radius: 999px;
+  color: #8f151b;
+  background: #fff1f2;
+  font-weight: 700 !important;
+}
+
 .content {
   min-width: 0;
   padding: 24px;
   background: #f6f7f8;
-}
-
-.session-box {
-  display: grid;
-  gap: 6px;
-  padding: 0 8px;
-  overflow-wrap: anywhere;
 }
 
 .auth-shell {
@@ -158,6 +235,33 @@ body {
   margin: 12px 0 8px;
 }
 
+.dashboard-chart-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 16px;
+}
+
+.dashboard-chart-card {
+  min-height: 340px;
+  padding: 16px;
+}
+
+.dashboard-chart-wide {
+  grid-column: span 1;
+}
+
+.dashboard-chart-heading {
+  display: grid;
+  gap: 4px;
+  min-height: 48px;
+}
+
+.dashboard-chart-body {
+  position: relative;
+  height: 240px;
+  margin-top: 18px;
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -171,6 +275,52 @@ body {
 .data-panel {
   overflow: hidden;
   border-color: rgba(181, 183, 186, 0.55) !important;
+}
+
+.team-invite-card {
+  padding: 16px;
+}
+
+.profile-card {
+  max-width: 720px;
+  padding: 18px;
+}
+
+.profile-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-avatar {
+  width: 64px !important;
+  height: 64px !important;
+  background: #C72028 !important;
+  color: #ffffff !important;
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+}
+
+.team-invite-form {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(180px, 240px) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.role-help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.role-help-item {
+  display: grid;
+  gap: 2px;
+  padding: 12px;
+  border: 1px solid rgba(181, 183, 186, 0.42);
+  border-radius: 8px;
+  background: #f8f9fa;
 }
 
 .centered {
@@ -194,8 +344,18 @@ body {
     padding: 18px;
   }
 
+  .topbar {
+    position: static;
+    justify-content: space-between;
+    padding: 12px 18px;
+  }
+
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-chart-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -207,6 +367,28 @@ body {
 
   .metric-grid {
     grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .account-button {
+    max-width: 100%;
+  }
+
+  .team-invite-form,
+  .role-help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-chart-card {
+    min-height: 320px;
+  }
+
+  .dashboard-chart-body {
+    height: 220px;
   }
 
   .toolbar > .MuiTextField-root {

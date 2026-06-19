@@ -5,7 +5,9 @@ import { Dashboard } from './components/Dashboard'
 import { EmptyState } from './components/EmptyState'
 import { EntityPage } from './components/EntityPage'
 import { Layout } from './components/Layout'
+import { ProfilePage } from './components/ProfilePage'
 import { Reports } from './components/Reports'
+import { TeamPage } from './components/TeamPage'
 import { getModule, modules } from './config/modules'
 import { useAuth } from './hooks/useAuth'
 import { signOut } from './services/auth'
@@ -14,7 +16,7 @@ import type { ModuleKey } from './services/supabase/types'
 import { appTheme } from './theme'
 
 function App() {
-  const [active, setActive] = useState<ModuleKey>('dashboard')
+  const [active, setActive] = useState<ModuleKey | 'profile'>('dashboard')
   const auth = useAuth()
 
   return (
@@ -25,6 +27,8 @@ function App() {
           active={active}
           modules={modules}
           onNavigate={setActive}
+          onOpenProfile={() => setActive('profile')}
+          onOpenTeam={() => setActive('userRoles')}
           onSignOut={handleSignOut}
           userEmail={auth.user?.email}
           userRole={auth.profile?.role}
@@ -56,14 +60,20 @@ function App() {
           active={active}
           modules={modules}
           onNavigate={setActive}
+          onOpenProfile={() => setActive('profile')}
+          onOpenTeam={() => setActive('userRoles')}
           onSignOut={handleSignOut}
           userEmail={auth.user?.email}
           userRole={auth.profile?.role}
         >
-          {active === 'dashboard' ? (
+          {active === 'profile' ? (
+            <ProfilePage email={auth.user?.email} role={auth.profile?.role} />
+          ) : active === 'dashboard' ? (
             <Dashboard modules={modules} />
           ) : active === 'reports' ? (
             <Reports />
+          ) : active === 'userRoles' ? (
+            <TeamPage module={getModule(active)} currentUserRole={auth.profile?.role} />
           ) : (
             <EntityPage module={getModule(active)} />
           )}

@@ -7,6 +7,8 @@ export interface UserProfile {
   role: 'superadmin' | 'admin' | 'user'
 }
 
+export type UserRole = UserProfile['role']
+
 export interface AuthState {
   session: Session | null
   user: User | null
@@ -51,6 +53,28 @@ export async function sendPasswordReset(email: string) {
   const redirectTo = `${window.location.origin}/?auth=recovery`
   const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo })
   if (error) throw error
+}
+
+export async function inviteTeamMember(email: string, role: UserRole): Promise<{ roleAssigned: boolean }> {
+  const emailRedirectTo = window.location.origin
+  const { error: inviteError } = await supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo,
+      shouldCreateUser: true,
+    },
+  })
+  if (inviteError) throw inviteError
+
+  const { data, error: roleError } = await supabase
+    .from('user_profiles')
+    .update({ role })
+    .eq('email', email)
+    .select('id')
+
+  if (roleError) throw roleError
+
+  return { roleAssigned: (data ?? []).length > 0 }
 }
 
 export async function updatePassword(password: string) {
