@@ -1,10 +1,9 @@
 import { Avatar, Box, Button, Divider, Menu, MenuItem, Stack, Typography } from '@mui/material'
 import { useState } from 'react'
-import type { ModuleDefinition, ModuleKey } from '../services/supabase/types'
+import type { ModuleKey } from '../services/supabase/types'
 
 interface LayoutProps {
   active: ModuleKey | 'profile'
-  modules: ModuleDefinition[]
   onNavigate: (key: ModuleKey) => void
   onOpenProfile: () => void
   onOpenTeam: () => void
@@ -16,30 +15,28 @@ interface LayoutProps {
 
 const mainNavItems: Array<{ key: ModuleKey; label: string }> = [
   { key: 'dashboard', label: 'Dashboard' },
-  { key: 'properties', label: 'Propiedades' },
-  { key: 'owners', label: 'Propietarios' },
-  { key: 'tenants', label: 'Locatarios' },
-  { key: 'contracts', label: 'Contratos' },
-  { key: 'payments', label: 'Cobros' },
-  { key: 'ownerCollections', label: 'Liquidaciones' },
-  { key: 'agenda', label: 'Agenda' },
-  { key: 'reports', label: 'Reportes' },
-  { key: 'userRoles', label: 'Equipo' },
-  { key: 'contractOwners', label: 'Contrato propietarios' },
-  { key: 'contractTenants', label: 'Contrato inquilinos' },
-  { key: 'employees', label: 'Empleados' },
+  { key: 'clients', label: 'Clientes' },
+  { key: 'properties', label: 'Inmuebles' },
+  { key: 'contracts', label: 'Locaciones' },
+]
+
+const administrationNavItems: Array<{ key: ModuleKey; label: string }> = [
+  { key: 'administration', label: 'Administración' },
 ]
 
 const configNavItems: Array<{ key: ModuleKey; label: string }> = [
-  { key: 'propertyTypes', label: 'Tipos' },
-  { key: 'contractTerms', label: 'Plazos' },
+  { key: 'propertyTypes', label: 'Tipos de inmueble' },
+  { key: 'contractTerms', label: 'Plazos de contrato' },
   { key: 'currencies', label: 'Monedas' },
-  { key: 'updateTypes', label: 'Actualizacion' },
+  { key: 'updateTypes', label: 'Actualizaciones' },
+  { key: 'iclIndices', label: 'Índice ICL' },
+  { key: 'agencySettings', label: 'Datos y comisión' },
+  { key: 'userRoles', label: 'Usuarios y roles' },
+  { key: 'employees', label: 'Empleados' },
 ]
 
 export function Layout({
   active,
-  modules,
   onNavigate,
   onOpenProfile,
   onOpenTeam,
@@ -65,42 +62,21 @@ export function Layout({
         </Box>
         <Box className="sidebar-scroll">
           <Stack spacing={0.75}>
-            {mainNavItems.map((item) => {
-              const resolved = modules.find((module) => module.key === item.key)
-              return (
-                <Button
-                  key={item.key}
-                  className="nav-button"
-                  color={active === item.key ? 'primary' : 'inherit'}
-                  onClick={() => onNavigate(item.key)}
-                  variant={active === item.key ? 'contained' : 'text'}
-                >
-                  <span>{item.label}</span>
-                  {resolved && <small>{resolved.table.name}</small>}
-                </Button>
-              )
-            })}
+            {mainNavItems.map(renderNavItem)}
           </Stack>
           <Divider sx={{ my: 2 }} />
           <Typography className="nav-section-label" variant="caption" color="text.secondary">
-            Configuracion
+            Administración
           </Typography>
           <Stack spacing={0.75} sx={{ mt: 1 }}>
-            {configNavItems.map((item) => {
-              const resolved = modules.find((module) => module.key === item.key)
-              return (
-                <Button
-                  key={item.key}
-                  className="nav-button"
-                  color={active === item.key ? 'primary' : 'inherit'}
-                  onClick={() => onNavigate(item.key)}
-                  variant={active === item.key ? 'contained' : 'text'}
-                >
-                  <span>{item.label}</span>
-                  {resolved && <small>{resolved.table.name}</small>}
-                </Button>
-              )
-            })}
+            {administrationNavItems.map(renderNavItem)}
+          </Stack>
+          <Divider sx={{ my: 2 }} />
+          <Typography className="nav-section-label" variant="caption" color="text.secondary">
+            Configuración
+          </Typography>
+          <Stack spacing={0.75} sx={{ mt: 1 }}>
+            {configNavItems.map(renderNavItem)}
           </Stack>
         </Box>
         <Divider sx={{ my: 2 }} />
@@ -179,6 +155,20 @@ export function Layout({
   function signOutFromMenu() {
     closeAccountMenu()
     onSignOut()
+  }
+
+  function renderNavItem(item: { key: ModuleKey; label: string }) {
+    return (
+      <Button
+        key={item.key}
+        className="nav-button"
+        color={active === item.key ? 'primary' : 'inherit'}
+        onClick={() => onNavigate(item.key)}
+        variant={active === item.key ? 'contained' : 'text'}
+      >
+        <span>{item.label}</span>
+      </Button>
+    )
   }
 }
 

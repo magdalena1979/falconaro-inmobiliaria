@@ -225,6 +225,21 @@ body {
   gap: 16px;
 }
 
+.icl-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.icl-summary-item {
+  min-width: 0;
+  padding: 14px;
+}
+
+.icl-sync-status {
+  padding: 16px;
+}
+
 .metric-card {
   min-height: 146px;
   padding: 16px;
@@ -292,6 +307,179 @@ body {
   gap: 16px;
 }
 
+.contract-template-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contract-template-card {
+  min-height: 126px;
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.contract-template-card:hover {
+  border-color: #7F7F7F;
+}
+
+.contract-template-card.selected {
+  border-color: #C72028;
+  box-shadow: 0 0 0 2px rgba(199, 32, 40, 0.1);
+}
+
+.contract-form-panel {
+  padding: 20px;
+}
+
+.location-linked-summary {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  min-height: 56px;
+  padding: 10px 12px;
+}
+
+.location-people-summary {
+  display: grid;
+  gap: 8px;
+  min-height: 56px;
+  padding: 10px 12px;
+}
+
+.location-person-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 9px;
+  border: 1px solid rgba(181, 183, 186, 0.45);
+  border-radius: 6px;
+  background: #f8f9fa;
+}
+
+.record-dialog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.record-dialog-grid .MuiFormControl-root:has(textarea) {
+  grid-column: span 2;
+}
+
+.field-error-text {
+  margin: 3px 14px 0;
+  color: #C72028;
+  font-size: 0.75rem;
+}
+
+.contract-field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contract-field-grid .MuiFormControl-root:has(textarea) {
+  grid-column: span 2;
+}
+
+.contract-preview {
+  padding: 24px;
+}
+
+.contract-preview pre {
+  margin: 12px 0 0;
+  overflow: auto;
+  color: #2C2C2C;
+  font-family: Arial, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.lease-stepper-panel {
+  padding: 20px 16px;
+}
+
+.lease-workflow-panel {
+  padding: 22px;
+}
+
+.lease-owner-block {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(181, 183, 186, 0.55);
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.lease-field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.lease-wide-field {
+  grid-column: span 2;
+}
+
+.lease-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lease-photo-preview {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.lease-photo-preview img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(181, 183, 186, 0.55);
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.lease-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px 16px;
+  padding: 14px;
+  border: 1px solid rgba(181, 183, 186, 0.55);
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.lease-review-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lease-review-block {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-height: 128px;
+  padding: 14px;
+  border: 1px solid rgba(181, 183, 186, 0.55);
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.contract-preview.compact {
+  max-height: 430px;
+  overflow: auto;
+}
+
 .profile-avatar {
   width: 64px !important;
   height: 64px !important;
@@ -357,9 +545,34 @@ body {
   .dashboard-chart-grid {
     grid-template-columns: 1fr;
   }
+
+  .contract-template-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contract-field-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lease-field-grid,
+  .lease-review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lease-photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lease-checkbox-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
+  .icl-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
   .page-heading {
     align-items: stretch;
     flex-direction: column;
@@ -379,8 +592,37 @@ body {
   }
 
   .team-invite-form,
-  .role-help-grid {
+  .role-help-grid,
+  .contract-template-grid,
+  .contract-field-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contract-field-grid .MuiFormControl-root:has(textarea) {
+    grid-column: span 1;
+  }
+
+  .lease-field-grid,
+  .lease-photo-grid,
+  .lease-checkbox-grid,
+  .lease-review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lease-wide-field {
+    grid-column: span 1;
+  }
+
+  .record-dialog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .record-dialog-grid .MuiFormControl-root:has(textarea) {
+    grid-column: span 1;
+  }
+
+  .lease-stepper-panel {
+    overflow-x: auto;
   }
 
   .dashboard-chart-card {

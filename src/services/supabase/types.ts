@@ -23,6 +23,7 @@ export interface ColumnSchema {
   description?: string
   reference?: ReferenceConfig
   options?: ColumnOption[]
+  multiple?: boolean
 }
 
 export interface TableSchema {
@@ -49,16 +50,20 @@ export interface ModuleDefinition {
   title: string
   singular: string
   description: string
+  createLabel?: string
   table: TableSchema
 }
 
 export type ModuleKey =
   | 'dashboard'
+  | 'clients'
   | 'properties'
   | 'owners'
   | 'tenants'
   | 'contracts'
+  | 'administration'
   | 'payments'
+  | 'expenses'
   | 'ownerCollections'
   | 'agenda'
   | 'reports'
@@ -70,3 +75,5 @@ export type ModuleKey =
   | 'contractTerms'
   | 'currencies'
   | 'updateTypes'
+  | 'agencySettings'
+  | 'iclIndices'

@@ -1,12 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
+  Alert,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  FormControlLabel,
+  InputLabel,
+  ListItemText,
   MenuItem,
-  Stack,
+  Select,
   TextField,
 } from '@mui/material'
 import { useEffect, useMemo } from 'react'
@@ -17,7 +23,7 @@ import type { ColumnSchema, TableRow, TableSchema } from '../services/supabase/t
 import { humanize } from '../utils/format'
 import type { ReferenceOptions } from '../hooks/useReferenceOptions'
 
-type FormValues = Record<string, string | number | boolean | null>
+type FormValues = Record<string, string | number | boolean | string[] | null>
 
 interface RecordDialogProps {
   open: boolean
@@ -26,6 +32,7 @@ interface RecordDialogProps {
   row?: TableRow
   referenceOptions: ReferenceOptions
   isPending: boolean
+  errorMessage?: string
   onClose: () => void
   onSubmit: (row: TableRow) => void
 }
@@ -37,6 +44,7 @@ export function RecordDialog({
   row,
   referenceOptions,
   isPending,
+  errorMessage,
   onClose,
   onSubmit,
 }: RecordDialogProps) {
@@ -56,51 +64,89 @@ export function RecordDialog({
   }, [defaultValues, reset])
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
       <DialogTitle>{mode === 'create' ? `Crear ${humanize(table.name)}` : `Editar ${humanize(table.name)}`}</DialogTitle>
       <DialogContent>
-        <Stack spacing={2} sx={{ pt: 1 }}>
+        {errorMessage && <Alert severity="error" sx={{ mb: 2 }}>{errorMessage}</Alert>}
+        <div className="record-dialog-grid">
           {editableColumns.map((column) => (
             <Controller
               key={column.name}
               control={control}
               name={column.name}
-              render={({ field, fieldState }) => (
-                <TextField
-                  {...field}
-                  error={Boolean(fieldState.error)}
-                  fullWidth
-                  helperText={fieldState.error?.message}
-                  label={humanize(column.name)}
-                  multiline={column.type === 'json'}
-                  select={Boolean(column.options) || Boolean(referenceOptions[column.name]) || column.type === 'boolean'}
-                  type={inputType(column)}
-                >
-                  {column.options
-                    ? column.options.map((option) => (
+              render={({ field, fieldState }) =>
+                column.type === 'boolean' ? (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={field.value === true || field.value === 'true'}
+                        onChange={(_, checked) => field.onChange(checked)}
+                      />
+                    }
+                    label={humanize(column.name)}
+                  />
+                ) : column.multiple ? (
+                  <FormControl error={Boolean(fieldState.error)} fullWidth>
+                    <InputLabel id={`${column.name}-label`}>{humanize(column.name)}</InputLabel>
+                    <Select
+                      labelId={`${column.name}-label`}
+                      label={humanize(column.name)}
+                      multiple
+                      value={Array.isArray(field.value) ? field.value : []}
+                      renderValue={(selected) =>
+                        referenceOptions[column.name]
+                          ?.filter((option) => (selected as string[]).includes(option.value))
+                          .map((option) => option.label)
+                          .join(' / ') ?? ''
+                      }
+                      onChange={(event) =>
+                        field.onChange(
+                          typeof event.target.value === 'string'
+                            ? event.target.value.split(',')
+                            : event.target.value,
+                        )
+                      }
+                    >
+                      {referenceOptions[column.name]?.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))
-                    : column.type === 'boolean'
-                    ? [
-                        <MenuItem key="true" value="true">
-                          Si
-                        </MenuItem>,
-                        <MenuItem key="false" value="false">
-                          No
-                        </MenuItem>,
-                      ]
-                    : referenceOptions[column.name]?.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
+                          <Checkbox checked={(Array.isArray(field.value) ? field.value : []).includes(option.value)} />
+                          <ListItemText primary={option.label} />
                         </MenuItem>
                       ))}
-                </TextField>
-              )}
+                    </Select>
+                    {fieldState.error?.message && (
+                      <span className="field-error-text">{fieldState.error.message}</span>
+                    )}
+                  </FormControl>
+                ) : (
+                  <TextField
+                    {...field}
+                    error={Boolean(fieldState.error)}
+                    fullWidth
+                    helperText={fieldState.error?.message}
+                    label={humanize(column.name)}
+                    multiline={column.type === 'json' || column.format === 'textarea'}
+                    minRows={column.format === 'textarea' ? 3 : undefined}
+                    select={Boolean(column.options) || Boolean(referenceOptions[column.name])}
+                    type={inputType(column)}
+                  >
+                    {column.options
+                      ? column.options.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))
+                      : referenceOptions[column.name]?.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                  </TextField>
+                )
+              }
             />
           ))}
-        </Stack>
+        </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancelar</Button>
@@ -122,9 +168,10 @@ function buildDefaultValues(columns: ColumnSchema[], row?: TableRow): FormValues
   return Object.fromEntries(
     columns.map((column) => {
       const value = row?.[column.name]
+      if (column.multiple) return [column.name, normalizeArrayValue(value)]
       if (value && typeof value === 'object') return [column.name, JSON.stringify(value)]
       if (value !== undefined && value !== null) return [column.name, value]
-      if (column.type === 'boolean') return [column.name, 'false']
+      if (column.type === 'boolean') return [column.name, false]
       return [column.name, '']
     }),
   )
@@ -140,6 +187,9 @@ function buildSchema(columns: ColumnSchema[]) {
 }
 
 function schemaForColumn(column: ColumnSchema): z.ZodType<unknown> {
+  if (column.multiple) {
+    return z.array(z.string()).min(column.required ? 1 : 0, 'Seleccioná al menos una opción')
+  }
   if (column.type === 'integer') {
     return z.preprocess(
       (value) => (value === '' || value === null ? undefined : Number(value)),
@@ -167,6 +217,19 @@ function schemaForColumn(column: ColumnSchema): z.ZodType<unknown> {
     }, 'JSON invalido')
   }
   return z.string()
+}
+
+function normalizeArrayValue(value: TableRow[string] | undefined): string[] {
+  if (Array.isArray(value)) return value.map(String)
+  if (typeof value === 'string' && value) {
+    try {
+      const parsed = JSON.parse(value)
+      if (Array.isArray(parsed)) return parsed.map(String)
+    } catch {
+      return [value]
+    }
+  }
+  return []
 }
 
 function inputType(column: ColumnSchema): string {

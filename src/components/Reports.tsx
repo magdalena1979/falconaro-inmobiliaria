@@ -25,7 +25,7 @@ export function Reports() {
           <Typography variant="overline">Gestion</Typography>
           <Typography variant="h4">Reportes</Typography>
           <Typography variant="body2" color="text.secondary">
-            Contratos, disponibilidad, cobros, comisiones y vencimientos.
+            Contratos, disponibilidad, ingresos, comisiones y vencimientos.
           </Typography>
         </Box>
       </Box>
@@ -77,7 +77,7 @@ async function buildReports(): Promise<ReportCard[]> {
       helper: 'Desde propiedades.estado',
     },
     {
-      title: 'Cobros por periodo',
+      title: 'Ingresos por período',
       value: sumMoney(payments, ['importe', 'cuota_mensual']),
       helper: 'Suma de pagos registrados',
     },
@@ -94,7 +94,7 @@ async function buildReports(): Promise<ReportCard[]> {
     {
       title: 'Liquidacion propietario',
       value: sumMoney(ownerCollections, ['importe']),
-      helper: 'Suma de cobros_propietario',
+      helper: 'Suma de liquidaciones a propietarios',
     },
   ]
 }

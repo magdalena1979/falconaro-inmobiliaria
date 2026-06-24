@@ -37,17 +37,19 @@ async function buildDashboard(modules: ModuleDefinition[]): Promise<DashboardDat
   const contractTable = findTable(modules, 'contracts')
   const paymentTable = findTable(modules, 'payments')
   const agendaTable = findTable(modules, 'agenda')
+  const iclTable = findTable(modules, 'iclIndices')
 
-  const [properties, contracts, payments, agenda] = await Promise.all([
+  const [properties, contracts, payments, agenda, iclIndices] = await Promise.all([
     listTableRows(propertyTable),
     listTableRows(contractTable),
     listTableRows(paymentTable),
     listTableRows(agendaTable),
+    listTableRows(iclTable),
   ])
 
   const activeRentals = metricStatus(contractTable, contracts, 'Alquileres activos', ['activo', 'vigente', 'active'])
   const expiringContracts = metricContractsExpiringSoon(contractTable, contracts)
-  const pendingPayments = metricStatus(paymentTable, payments, 'Cobros pendientes', [
+  const pendingPayments = metricStatus(paymentTable, payments, 'Ingresos pendientes', [
     'pendiente',
     'pending',
     'adeudado',
@@ -63,7 +65,7 @@ async function buildDashboard(modules: ModuleDefinition[]): Promise<DashboardDat
     paymentTimeline: seriesPaymentTimeline(paymentTable, payments),
     annualPaymentTimeline: seriesAnnualPaymentTimeline(paymentTable, payments),
     alertUrgency: seriesAlertUrgency(agendaTable, agenda),
-    rentalAdjustmentIndex: seriesRentalAdjustmentIndexMock(),
+    rentalAdjustmentIndex: seriesRentalAdjustmentIndex(iclTable, iclIndices),
   }
 }
 
@@ -157,7 +159,7 @@ function metricOpenAlerts(
   return {
     label: 'Alertas y vencimientos',
     value: (expiringContracts.value ?? 0) + (pendingPayments.value ?? 0),
-    helper: 'Contratos por vencer + cobros pendientes',
+    helper: 'Contratos por vencer + ingresos pendientes',
   }
 }
 
@@ -195,7 +197,7 @@ function seriesByStatus(table: TableSchema | undefined, rows: TableRow[], fallba
 }
 
 function seriesPaymentTimeline(table: TableSchema | undefined, rows: TableRow[]): DashboardSeries {
-  if (!table) return emptySeries('Preparado para vincular cobros')
+  if (!table) return emptySeries('Preparado para vincular ingresos')
   const amountColumn = findColumn(table, [
     'importe',
     'total_recibo_locatario',
@@ -223,7 +225,7 @@ function seriesPaymentTimeline(table: TableSchema | undefined, rows: TableRow[])
 }
 
 function seriesAnnualPaymentTimeline(table: TableSchema | undefined, rows: TableRow[]): DashboardSeries {
-  if (!table) return emptySeries('Preparado para vincular cobros anuales')
+  if (!table) return emptySeries('Preparado para vincular ingresos anuales')
   const amountColumn = findColumn(table, [
     'importe',
     'total_recibo_locatario',
@@ -245,16 +247,31 @@ function seriesAnnualPaymentTimeline(table: TableSchema | undefined, rows: Table
     labels: monthBuckets.map((bucket) => bucket.label),
     values: monthBuckets.map((bucket) => Math.round(bucketValues.get(bucket.key) ?? 0)),
     helper: amountColumn
-      ? `Cobros del ano corriente desde ${table.name}.${amountColumn}`
+      ? `Ingresos del año corriente desde ${table.name}.${amountColumn}`
       : `Cantidad preparada desde ${table.name}; falta columna de importe`,
   }
 }
 
-function seriesRentalAdjustmentIndexMock(): DashboardSeries {
+function seriesRentalAdjustmentIndex(table: TableSchema | undefined, rows: TableRow[]): DashboardSeries {
+  if (!table) return emptySeries('Preparado para leer el ICL almacenado')
+  const currentYear = new Date().getFullYear()
+  const latestByMonth = new Map<string, { date: string; value: number }>()
+
+  for (const row of rows) {
+    const date = String(row.fecha ?? '')
+    if (!date.startsWith(`${currentYear}-`)) continue
+    const key = date.slice(0, 7)
+    const previous = latestByMonth.get(key)
+    if (!previous || date > previous.date) {
+      latestByMonth.set(key, { date, value: toNumber(row.valor) })
+    }
+  }
+
+  const buckets = currentYearBuckets()
   return {
-    labels: currentYearBuckets().map((bucket) => bucket.label),
-    values: [100, 106, 112, 119, 126, 134, 143, 152, 162, 173, 185, 198],
-    helper: 'ICL mock visual; pendiente conectar con la API del BCRA',
+    labels: buckets.map((bucket) => bucket.label),
+    values: buckets.map((bucket) => latestByMonth.get(bucket.key)?.value ?? 0),
+    helper: `Último valor mensual almacenado en ${table.name}`,
   }
 }
 

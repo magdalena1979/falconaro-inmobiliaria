@@ -2,6 +2,7 @@ import { Box, Button, Chip, CircularProgress, MenuItem, Paper, Stack, TextField,
 import { DataGrid } from '@mui/x-data-grid'
 import type { GridColDef } from '@mui/x-data-grid'
 import { useMemo, useState } from 'react'
+import type { ReactNode } from 'react'
 import { useReferenceOptions } from '../hooks/useReferenceOptions'
 import { useTableMutations, useTableRows } from '../hooks/useTableRows'
 import type { ModuleDefinition, TableRow } from '../services/supabase/types'
@@ -11,9 +12,10 @@ import { RecordDialog } from './RecordDialog'
 
 interface EntityPageProps {
   module: ModuleDefinition
+  renderRowActions?: (row: TableRow) => ReactNode
 }
 
-export function EntityPage({ module }: EntityPageProps) {
+export function EntityPage({ module, renderRowActions }: EntityPageProps) {
   const [search, setSearch] = useState('')
   const [filterColumn, setFilterColumn] = useState('')
   const [filterValue, setFilterValue] = useState('')
@@ -50,9 +52,10 @@ export function EntityPage({ module }: EntityPageProps) {
       headerName: '',
       sortable: false,
       filterable: false,
-      width: 170,
+      width: renderRowActions ? 360 : 170,
       renderCell: (params) => (
         <Stack direction="row" spacing={1}>
+          {renderRowActions?.(params.row)}
           <Button size="small" onClick={() => openEdit(params.row)}>
             Editar
           </Button>
@@ -71,7 +74,11 @@ export function EntityPage({ module }: EntityPageProps) {
 
   return (
     <Stack spacing={3}>
-      <PageHeader module={module} tableName={table.name} onCreate={table.canCreate === false ? undefined : openCreate} />
+      <PageHeader
+        module={module}
+        tableName={table.name}
+        onCreate={table.canCreate === false ? undefined : openCreate}
+      />
 
       <Paper variant="outlined" className="toolbar">
         <TextField
@@ -155,6 +162,10 @@ export function EntityPage({ module }: EntityPageProps) {
       )}
 
       <RecordDialog
+        errorMessage={
+          mutations.create.error?.message ??
+          mutations.update.error?.message
+        }
         isPending={mutations.isPending}
         mode={editingRow ? 'edit' : 'create'}
         onClose={() => setIsDialogOpen(false)}
@@ -208,7 +219,11 @@ function PageHeader({ module, tableName, onCreate }: PageHeaderProps) {
           {module.description}
         </Typography>
       </Box>
-      {onCreate && <Button variant="contained" onClick={onCreate}>Crear</Button>}
+      {onCreate && (
+        <Button variant="contained" onClick={onCreate}>
+          {module.createLabel ?? 'Crear'}
+        </Button>
+      )}
     </Box>
   )
 }

@@ -201,19 +201,19 @@ export function Dashboard({ modules }: DashboardProps) {
 
             <ChartPanel
               className="dashboard-chart-wide"
-              title="Cobros de los ultimos 6 meses"
+              title="Ingresos de los últimos 6 meses"
               helper={dashboard.paymentTimeline.helper}
             >
-              <Line data={toLineData(dashboard.paymentTimeline, 'Cobros', chartColors.red)} options={currencyLineOptions} />
+              <Line data={toLineData(dashboard.paymentTimeline, 'Ingresos', chartColors.red)} options={currencyLineOptions} />
             </ChartPanel>
 
             <ChartPanel
               className="dashboard-chart-wide"
-              title="Cobros del ano"
+              title="Ingresos del año"
               helper={dashboard.annualPaymentTimeline.helper}
             >
               <Line
-                data={toLineData(dashboard.annualPaymentTimeline, 'Cobros anuales', chartColors.green)}
+                data={toLineData(dashboard.annualPaymentTimeline, 'Ingresos anuales', chartColors.green)}
                 options={currencyLineOptions}
               />
             </ChartPanel>

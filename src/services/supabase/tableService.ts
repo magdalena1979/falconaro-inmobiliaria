@@ -20,8 +20,9 @@ export async function countRows(table: TableSchema): Promise<number> {
 }
 
 export async function createRow(table: TableSchema, row: TableRow): Promise<void> {
-  const { error } = await supabase.from(table.name).insert(cleanPayload(row, table.columns))
-  if (error) throw error
+  const payload = cleanPayload(row, table.columns)
+  const { error } = await supabase.from(table.name).insert(payload)
+  if (error) throw formatSupabaseError(error, table.name, 'crear')
 }
 
 export async function updateRow(table: TableSchema, row: TableRow): Promise<void> {
@@ -31,14 +32,14 @@ export async function updateRow(table: TableSchema, row: TableRow): Promise<void
     .from(table.name)
     .update(cleanPayload(row, table.columns, table.primaryKey))
     .eq(table.primaryKey, id as string | number | boolean)
-  if (error) throw error
+  if (error) throw formatSupabaseError(error, table.name, 'actualizar')
 }
 
 export async function deleteRow(table: TableSchema, row: TableRow): Promise<void> {
   if (!table.primaryKey) throw new Error(`La tabla ${table.name} no expone una clave primaria editable.`)
   const id = row[table.primaryKey]
   const { error } = await supabase.from(table.name).delete().eq(table.primaryKey, id as string | number | boolean)
-  if (error) throw error
+  if (error) throw formatSupabaseError(error, table.name, 'eliminar')
 }
 
 function cleanPayload(row: TableRow, columns: ColumnSchema[], primaryKey?: string): TableRow {
@@ -48,17 +49,40 @@ function cleanPayload(row: TableRow, columns: ColumnSchema[], primaryKey?: strin
       .map((column) => column.name),
   )
 
-  return Object.fromEntries(
+  const payload = Object.fromEntries(
     Object.entries(row)
       .filter(([key]) => editableColumns.has(key))
-      .map(([key, value]) => [key, value === '' ? null : value]),
+      .filter(([, value]) => value !== '' && value !== undefined)
+      .map(([key, value]) => [key, value]),
   )
+
+  if (row.titulares_ids && Array.isArray(row.titulares_ids)) {
+    payload.propietario_id = row.titulares_ids[0] ?? null
+  }
+
+  return payload
+}
+
+function formatSupabaseError(
+  error: { message: string; code?: string; details?: string; hint?: string },
+  tableName: string,
+  action: string,
+): Error {
+  const parts = [
+    `No se pudo ${action} en ${tableName}.`,
+    error.message,
+    error.details,
+    error.hint,
+    error.code ? `Código: ${error.code}` : undefined,
+  ].filter(Boolean)
+  return new Error(parts.join(' '))
 }
 
 function findOrderColumn(columns: ColumnSchema[]): string | undefined {
   return (
     columns.find((column) => column.name === 'created_at')?.name ??
     columns.find((column) => column.name === 'updated_at')?.name ??
-    columns.find((column) => column.type === 'datetime')?.name
+    columns.find((column) => column.type === 'datetime')?.name ??
+    columns.find((column) => column.type === 'date')?.name
   )
 }
