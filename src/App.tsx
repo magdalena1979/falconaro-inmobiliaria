@@ -92,7 +92,7 @@ function App() {
             <ContractsPage
               module={getModule('contracts')}
               ownersModule={getModule('owners')}
-              clientsModule={getModule('clients')}
+              guarantorsModule={getModule('guarantors')}
               tenantsModule={getModule('tenants')}
               propertiesModule={getModule('properties')}
               propertyTypesModule={getModule('propertyTypes')}

@@ -1,143 +1,439 @@
-import {
-  Alert,
-  Button,
-  Checkbox,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormControl,
-  InputLabel,
-  ListItemText,
-  MenuItem,
-  Select,
-  Stack,
-  Typography,
-} from '@mui/material'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
-import { useTableRows } from '../hooks/useTableRows'
-import { supabase } from '../services/supabase/client'
-import type { ModuleDefinition, TableRow } from '../services/supabase/types'
-import { EntityPage } from './EntityPage'
+import { Box, Button, Chip, CircularProgress, Divider, MenuItem, Paper, Stack, TextField, Typography } from '@mui/material'
+import { DataGrid } from '@mui/x-data-grid'
+import type { GridColDef, GridRowParams } from '@mui/x-data-grid'
+import { useMemo, useState } from 'react'
+import { useReferenceOptions } from '../hooks/useReferenceOptions'
+import { useTableMutations, useTableRows } from '../hooks/useTableRows'
+import type { ColumnSchema, ModuleDefinition, TableRow } from '../services/supabase/types'
+import { formatValue, humanize, includesText } from '../utils/format'
+import { EmptyState } from './EmptyState'
+import { RecordForm } from './RecordForm'
 
 interface PropertiesPageProps {
   module: ModuleDefinition
   ownersModule: ModuleDefinition
 }
 
-export function PropertiesPage({ module, ownersModule }: PropertiesPageProps) {
-  const [property, setProperty] = useState<TableRow>()
-  const [ownerIds, setOwnerIds] = useState<string[]>([])
-  const ownersQuery = useTableRows(ownersModule.table)
-  const queryClient = useQueryClient()
-  const updateOwners = useMutation({
-    mutationFn: async () => {
-      if (!property?.id || !ownerIds.length) {
-        throw new Error('Seleccioná al menos un propietario.')
-      }
-      const { error } = await supabase
-        .from('propiedades')
-        .update({
-          propietario_id: ownerIds[0],
-          titulares_ids: ownerIds,
-        })
-        .eq('id', String(property.id))
-      if (error) throw error
-    },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['table-rows', 'propiedades'] })
-      setProperty(undefined)
-    },
-  })
+type PropertyView =
+  | { mode: 'list' }
+  | { mode: 'detail'; id: string }
+  | { mode: 'create' }
+  | { mode: 'edit'; id: string }
 
-  const owners = ownersQuery.data ?? []
+export function PropertiesPage({ module }: PropertiesPageProps) {
+  const [view, setView] = useState<PropertyView>({ mode: 'list' })
+  const [search, setSearch] = useState('')
+  const [filterColumn, setFilterColumn] = useState('')
+  const [filterValue, setFilterValue] = useState('')
+  const table = module.table
+  const rowsQuery = useTableRows(table)
+  const mutations = useTableMutations(table)
+  const referenceOptions = useReferenceOptions(table)
 
-  return (
-    <>
-      <EntityPage
-        module={module}
-        renderRowActions={(row) => (
-          <Button size="small" onClick={() => openOwners(row)}>
-            Propietarios
-          </Button>
-        )}
-      />
-      <Dialog open={Boolean(property)} onClose={() => setProperty(undefined)} fullWidth maxWidth="sm">
-        <DialogTitle>Propietarios del inmueble</DialogTitle>
-        <DialogContent>
-          <Stack spacing={2} sx={{ pt: 1 }}>
-            <Typography variant="body2" color="text.secondary">
-              {String(property?.direccion ?? 'Inmueble seleccionado')}
-            </Typography>
-            <FormControl fullWidth>
-              <InputLabel id="property-owner-label">Propietarios</InputLabel>
-              <Select
-                labelId="property-owner-label"
-                label="Propietarios"
-                multiple
-                value={ownerIds}
-                renderValue={(selected) =>
-                  owners
-                    .filter((owner) => selected.includes(String(owner.id)))
-                    .map(personLabel)
-                    .join(' / ')
-                }
-                onChange={(event) =>
-                  setOwnerIds(
-                    typeof event.target.value === 'string'
-                      ? event.target.value.split(',')
-                      : event.target.value,
-                  )
-                }
-              >
-                {owners.map((owner) => {
-                  const id = String(owner.id)
-                  return (
-                    <MenuItem key={id} value={id}>
-                      <Checkbox checked={ownerIds.includes(id)} />
-                      <ListItemText primary={personLabel(owner)} />
-                    </MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
-            {updateOwners.error && <Alert severity="error">{updateOwners.error.message}</Alert>}
-          </Stack>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setProperty(undefined)}>Cancelar</Button>
-          <Button
-            disabled={updateOwners.isPending || !ownerIds.length}
-            variant="contained"
-            onClick={() => updateOwners.mutate()}
-          >
-            Guardar propietarios
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
+  const rows = useMemo(() => rowsQuery.data ?? [], [rowsQuery.data])
+  const selectedProperty = useMemo(() => {
+    if (view.mode !== 'detail' && view.mode !== 'edit') return undefined
+    return rows.find((row) => String(row[table.primaryKey ?? 'id']) === view.id)
+  }, [rows, table.primaryKey, view])
+
+  const visibleRows = useMemo(
+    () =>
+      rows
+        .filter((row) => includesText(row, search))
+        .filter((row) => !filterColumn || !filterValue || String(row[filterColumn] ?? '') === filterValue),
+    [filterColumn, filterValue, rows, search],
   )
 
-  function openOwners(row: TableRow) {
-    setProperty(row)
-    setOwnerIds(ownerIdsForProperty(row))
+  if (view.mode === 'create') {
+    return (
+      <PropertyFormPage
+        errorMessage={mutations.create.error?.message}
+        isPending={mutations.isPending}
+        mode="create"
+        module={module}
+        onCancel={() => setView({ mode: 'list' })}
+        onSubmit={(row) => submitCreate(row)}
+        referenceOptions={referenceOptions}
+      />
+    )
+  }
+
+  if (view.mode === 'edit') {
+    if (!selectedProperty) return <LoadingOrMissing isLoading={rowsQuery.isLoading} onBack={() => setView({ mode: 'list' })} />
+    return (
+      <PropertyFormPage
+        errorMessage={mutations.update.error?.message}
+        isPending={mutations.isPending}
+        mode="edit"
+        module={module}
+        onCancel={() => setView({ mode: 'detail', id: view.id })}
+        onSubmit={(row) => submitEdit(selectedProperty, row)}
+        referenceOptions={referenceOptions}
+        row={selectedProperty}
+      />
+    )
+  }
+
+  if (view.mode === 'detail') {
+    if (!selectedProperty) return <LoadingOrMissing isLoading={rowsQuery.isLoading} onBack={() => setView({ mode: 'list' })} />
+    return (
+      <PropertyDetailPage
+        module={module}
+        onBack={() => setView({ mode: 'list' })}
+        onEdit={() => setView({ mode: 'edit', id: view.id })}
+        referenceOptions={referenceOptions}
+        row={selectedProperty}
+      />
+    )
+  }
+
+  const dataColumns = table.columns.slice(0, 8).map<GridColDef>((column) => ({
+    field: column.name,
+    headerName: humanize(column.name),
+    flex: 1,
+    minWidth: 150,
+    valueFormatter: (value) =>
+      formatReferenceValue(value, referenceOptions[column.name]) ?? formatValue(value, column),
+  }))
+
+  const columns: GridColDef[] = [
+    ...dataColumns,
+    {
+      field: '__actions',
+      headerName: '',
+      sortable: false,
+      filterable: false,
+      width: 130,
+      renderCell: (params) => (
+        <Button
+          size="small"
+          onClick={(event) => {
+            event.stopPropagation()
+            setView({ mode: 'edit', id: String(params.row[table.primaryKey ?? 'id']) })
+          }}
+        >
+          Editar
+        </Button>
+      ),
+    },
+  ]
+  const filterOptions = filterColumn
+    ? Array.from(new Set(rows.map((row) => String(row[filterColumn] ?? '')).filter(Boolean))).slice(0, 50)
+    : []
+
+  return (
+    <Stack spacing={3}>
+      <Box className="page-heading">
+        <Box>
+          <Typography variant="overline">{table.name}</Typography>
+          <Typography variant="h4">{module.title}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {module.description}
+          </Typography>
+        </Box>
+        <Button variant="contained" onClick={() => setView({ mode: 'create' })}>
+          {module.createLabel ?? 'Nuevo inmueble'}
+        </Button>
+      </Box>
+
+      <Paper variant="outlined" className="toolbar">
+        <TextField label="Buscar" onChange={(event) => setSearch(event.target.value)} size="small" value={search} />
+        <TextField
+          label="Filtrar por"
+          onChange={(event) => {
+            setFilterColumn(event.target.value)
+            setFilterValue('')
+          }}
+          select
+          size="small"
+          value={filterColumn}
+          sx={{ minWidth: 180 }}
+        >
+          <MenuItem value="">Sin filtro</MenuItem>
+          {table.columns.map((column) => (
+            <MenuItem key={column.name} value={column.name}>
+              {humanize(column.name)}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
+          disabled={!filterColumn}
+          label="Valor"
+          onChange={(event) => setFilterValue(event.target.value)}
+          select
+          size="small"
+          value={filterValue}
+          sx={{ minWidth: 180 }}
+        >
+          <MenuItem value="">Todos</MenuItem>
+          {filterOptions.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+        <Chip label={`${visibleRows.length} registros`} />
+      </Paper>
+
+      {rowsQuery.isLoading ? (
+        <Box className="centered">
+          <CircularProgress size={28} />
+        </Box>
+      ) : rowsQuery.isError ? (
+        <EmptyState title="No se pudieron cargar inmuebles" description={rowsQuery.error.message} severity="error" />
+      ) : (
+        <Paper variant="outlined" className="data-panel properties-data-panel">
+          <DataGrid
+            autoHeight
+            columns={columns}
+            disableRowSelectionOnClick
+            getRowId={(row) => String(row[table.primaryKey ?? 'id'])}
+            initialState={{ pagination: { paginationModel: { pageSize: 10 } } }}
+            onRowClick={openDetail}
+            pageSizeOptions={[10, 25, 50]}
+            rows={visibleRows}
+            sx={{ '& .MuiDataGrid-row': { cursor: 'pointer' } }}
+          />
+        </Paper>
+      )}
+
+      {(mutations.create.error || mutations.update.error || mutations.remove.error) && (
+        <EmptyState
+          title="No se pudo guardar el cambio"
+          description={
+            mutations.create.error?.message ??
+            mutations.update.error?.message ??
+            mutations.remove.error?.message ??
+            'Supabase rechazo la operacion.'
+          }
+          severity="error"
+        />
+      )}
+    </Stack>
+  )
+
+  function openDetail(params: GridRowParams<TableRow>) {
+    setView({ mode: 'detail', id: String(params.row[table.primaryKey ?? 'id']) })
+  }
+
+  function submitCreate(row: TableRow) {
+    const payload = normalizePayload(row, table.columns.map((column) => column.name))
+    mutations.create.mutate(payload, {
+      onSuccess: () => setView({ mode: 'list' }),
+    })
+  }
+
+  function submitEdit(currentRow: TableRow, row: TableRow) {
+    const payload = normalizePayload(row, table.columns.map((column) => column.name))
+    const id = String(currentRow[table.primaryKey ?? 'id'])
+    mutations.update.mutate({ ...currentRow, ...payload }, {
+      onSuccess: () => setView({ mode: 'detail', id }),
+    })
   }
 }
 
-function personLabel(row: TableRow): string {
-  return [row.apellidos, row.nombres].filter(Boolean).join(', ') || String(row.id)
+interface PropertyFormPageProps {
+  module: ModuleDefinition
+  mode: 'create' | 'edit'
+  row?: TableRow
+  referenceOptions: Record<string, Array<{ value: string; label: string }>>
+  isPending: boolean
+  errorMessage?: string
+  onCancel: () => void
+  onSubmit: (row: TableRow) => void
 }
 
-function ownerIdsForProperty(row: TableRow): string[] {
-  if (Array.isArray(row.titulares_ids)) return row.titulares_ids.map(String)
-  if (typeof row.titulares_ids === 'string') {
+function PropertyFormPage({
+  module,
+  mode,
+  row,
+  referenceOptions,
+  isPending,
+  errorMessage,
+  onCancel,
+  onSubmit,
+}: PropertyFormPageProps) {
+  return (
+    <Stack spacing={3}>
+      <Box className="page-heading">
+        <Box>
+          <Typography variant="overline">{module.table.name}</Typography>
+          <Typography variant="h4">{mode === 'create' ? 'Nuevo inmueble' : 'Editar inmueble'}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {mode === 'create' ? 'Carga completa del inmueble y sus propietarios.' : propertyTitle(row)}
+          </Typography>
+        </Box>
+        <Button onClick={onCancel}>Volver</Button>
+      </Box>
+      <Paper variant="outlined" className="entity-form-page">
+        <RecordForm
+          errorMessage={errorMessage}
+          isPending={isPending}
+          mode={mode}
+          onCancel={onCancel}
+          onSubmit={onSubmit}
+          referenceOptions={referenceOptions}
+          row={row}
+          submitLabel={mode === 'create' ? 'Crear inmueble' : 'Guardar cambios'}
+          table={module.table}
+        />
+      </Paper>
+    </Stack>
+  )
+}
+
+interface PropertyDetailPageProps {
+  module: ModuleDefinition
+  row: TableRow
+  referenceOptions: Record<string, Array<{ value: string; label: string }>>
+  onBack: () => void
+  onEdit: () => void
+}
+
+function PropertyDetailPage({ module, row, referenceOptions, onBack, onEdit }: PropertyDetailPageProps) {
+  const columns = module.table.columns.filter((column) => !['id', 'created_at', 'updated_at'].includes(column.name))
+  const primary = columns.slice(0, 14)
+  const details = columns.slice(14, 38)
+  const documents = columns.slice(38)
+
+  return (
+    <Stack spacing={3}>
+      <Box className="page-heading">
+        <Box>
+          <Typography variant="overline">{module.table.name}</Typography>
+          <Typography variant="h4">{propertyTitle(row)}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {formatReferenceValue(row.titulares_ids, referenceOptions.titulares_ids) ??
+              formatReferenceValue(row.propietario_id, referenceOptions.propietario_id) ??
+              'Sin propietarios visibles'}
+          </Typography>
+        </Box>
+        <Stack direction="row" spacing={1}>
+          <Button onClick={onBack}>Volver</Button>
+          <Button variant="contained" onClick={onEdit}>
+            Editar
+          </Button>
+        </Stack>
+      </Box>
+
+      <Paper variant="outlined" className="property-detail-hero">
+        <Stack spacing={1}>
+          <Typography variant="overline">Estado</Typography>
+          <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
+            <Chip label={formatValue(row.estado, module.table.columns.find((column) => column.name === 'estado'))} />
+            {row.numero_registro_propiedad && <Chip label={`Registro ${row.numero_registro_propiedad}`} variant="outlined" />}
+            {row.codigo && <Chip label={`Codigo ${row.codigo}`} variant="outlined" />}
+          </Stack>
+        </Stack>
+      </Paper>
+
+      <DetailSection columns={primary} referenceOptions={referenceOptions} row={row} title="Datos principales" />
+      <DetailSection columns={details} referenceOptions={referenceOptions} row={row} title="Caracteristicas" />
+      <DetailSection columns={documents} referenceOptions={referenceOptions} row={row} title="Servicios y documentacion" />
+    </Stack>
+  )
+}
+
+function DetailSection({
+  title,
+  columns,
+  row,
+  referenceOptions,
+}: {
+  title: string
+  columns: ColumnSchema[]
+  row: TableRow
+  referenceOptions: Record<string, Array<{ value: string; label: string }>>
+}) {
+  if (columns.length === 0) return null
+
+  return (
+    <Paper variant="outlined" className="property-detail-section">
+      <Typography variant="h6">{title}</Typography>
+      <Divider sx={{ my: 1.5 }} />
+      <Box className="property-detail-grid">
+        {columns.map((column) => (
+          <Box key={column.name} className="property-detail-item">
+            <Typography variant="caption" color="text.secondary">
+              {humanize(column.name)}
+            </Typography>
+            <Typography variant="body2">
+              {formatReferenceValue(row[column.name], referenceOptions[column.name]) ?? formatValue(row[column.name], column)}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </Paper>
+  )
+}
+
+function LoadingOrMissing({ isLoading, onBack }: { isLoading: boolean; onBack: () => void }) {
+  if (isLoading) {
+    return (
+      <Box className="centered">
+        <CircularProgress size={28} />
+      </Box>
+    )
+  }
+
+  return (
+    <EmptyState
+      actionLabel="Volver"
+      description="No se encontro el inmueble seleccionado."
+      onAction={onBack}
+      severity="warning"
+      title="Inmueble no disponible"
+    />
+  )
+}
+
+function propertyTitle(row: TableRow | undefined): string {
+  if (!row) return 'Inmueble'
+  return String(row.direccion ?? row.codigo ?? row.id ?? 'Inmueble')
+}
+
+function normalizePayload(row: TableRow, columnNames: string[]): TableRow {
+  return Object.fromEntries(
+    Object.entries(row)
+      .filter(([key]) => columnNames.includes(key))
+      .map(([key, value]) => {
+        if (value === 'true') return [key, true]
+        if (value === 'false') return [key, false]
+        return [key, value]
+      }),
+  )
+}
+
+function formatReferenceValue(
+  value: unknown,
+  options: Array<{ value: string; label: string }> | undefined,
+): string | undefined {
+  if (!options) return undefined
+
+  if (Array.isArray(value)) {
+    const labels = value
+      .map(String)
+      .map((id) => options.find((option) => option.value === id)?.label ?? id)
+    return labels.length > 0 ? labels.join(' / ') : undefined
+  }
+
+  if (typeof value === 'string' && value.startsWith('[')) {
     try {
-      const parsed = JSON.parse(row.titulares_ids)
-      if (Array.isArray(parsed)) return parsed.map(String)
+      const parsed = JSON.parse(value)
+      if (Array.isArray(parsed)) {
+        const labels = parsed
+          .map(String)
+          .map((id) => options.find((option) => option.value === id)?.label ?? id)
+        return labels.length > 0 ? labels.join(' / ') : undefined
+      }
     } catch {
-      // Legacy records can still use propietario_id.
+      return undefined
     }
   }
-  return row.propietario_id ? [String(row.propietario_id)] : []
+
+  if (value !== null && value !== undefined && value !== '') {
+    return options.find((option) => option.value === String(value))?.label
+  }
+
+  return undefined
 }

@@ -43,7 +43,7 @@ import { EntityPage } from './EntityPage'
 interface ContractsPageProps {
   module: ModuleDefinition
   ownersModule: ModuleDefinition
-  clientsModule: ModuleDefinition
+  guarantorsModule: ModuleDefinition
   tenantsModule: ModuleDefinition
   propertiesModule: ModuleDefinition
   propertyTypesModule: ModuleDefinition
@@ -168,7 +168,7 @@ const defaultValues: ContractFormValues = {
 export function ContractsPage({
   module,
   ownersModule,
-  clientsModule,
+  guarantorsModule,
   tenantsModule,
   propertiesModule,
   propertyTypesModule,
@@ -203,7 +203,7 @@ export function ContractsPage({
       ) : (
         <ContractGenerator
           ownersModule={ownersModule}
-          clientsModule={clientsModule}
+          guarantorsModule={guarantorsModule}
           tenantsModule={tenantsModule}
           propertiesModule={propertiesModule}
           propertyTypesModule={propertyTypesModule}
@@ -229,7 +229,7 @@ export function ContractsPage({
 
 function ContractGenerator({
   ownersModule,
-  clientsModule,
+  guarantorsModule,
   tenantsModule,
   propertiesModule,
   propertyTypesModule,
@@ -239,7 +239,7 @@ function ContractGenerator({
   settingsModule,
 }: Omit<ContractsPageProps, 'module'>) {
   const ownersQuery = useTableRows(ownersModule.table)
-  const clientsQuery = useTableRows(clientsModule.table)
+  const guarantorsQuery = useTableRows(guarantorsModule.table)
   const tenantsQuery = useTableRows(tenantsModule.table)
   const propertiesQuery = useTableRows(propertiesModule.table)
   const propertyTypesQuery = useTableRows(propertyTypesModule.table)
@@ -270,10 +270,7 @@ function ContractGenerator({
   const templateId = useWatch({ control, name: 'templateId' })
   const selectedTemplate = getContractTemplate(templateId)
   const owners = useMemo(() => ownersQuery.data ?? [], [ownersQuery.data])
-  const guarantors = useMemo(
-    () => (clientsQuery.data ?? []).filter((row) => row.es_garante === true),
-    [clientsQuery.data],
-  )
+  const guarantors = useMemo(() => guarantorsQuery.data ?? [], [guarantorsQuery.data])
   const tenants = useMemo(() => tenantsQuery.data ?? [], [tenantsQuery.data])
   const properties = useMemo(() => propertiesQuery.data ?? [], [propertiesQuery.data])
   const propertyTypes = useMemo(() => propertyTypesQuery.data ?? [], [propertyTypesQuery.data])

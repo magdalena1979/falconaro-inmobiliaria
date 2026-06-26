@@ -292,6 +292,39 @@ body {
   border-color: rgba(181, 183, 186, 0.55) !important;
 }
 
+.properties-data-panel .MuiDataGrid-row:hover {
+  background: #fff8f8;
+}
+
+.entity-form-page {
+  padding: 22px;
+  border-color: rgba(181, 183, 186, 0.55) !important;
+}
+
+.property-detail-hero,
+.property-detail-section {
+  padding: 18px;
+  border-color: rgba(181, 183, 186, 0.55) !important;
+}
+
+.property-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.property-detail-item {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(181, 183, 186, 0.42);
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.property-detail-item p {
+  overflow-wrap: anywhere;
+}
+
 .team-invite-card {
   padding: 16px;
 }
@@ -555,7 +588,8 @@ body {
   }
 
   .lease-field-grid,
-  .lease-review-grid {
+  .lease-review-grid,
+  .property-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -605,7 +639,8 @@ body {
   .lease-field-grid,
   .lease-photo-grid,
   .lease-checkbox-grid,
-  .lease-review-grid {
+  .lease-review-grid,
+  .property-detail-grid {
     grid-template-columns: 1fr;
   }
 

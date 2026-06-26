@@ -134,18 +134,13 @@ export async function createLeaseWorkflow(input: LeaseWorkflowInput): Promise<Le
     const tenant = await insertTenant(input.tenant)
     tenantId = tenant.id
     clientIds.push(tenant.clienteId, tenant.garanteClienteId)
-    const contract = await insertContract(input, property.id, owners[0].id, tenant.id)
-    contractId = contract.id
-
-    const { error: relationsError } = await supabase.from('contrato_propietarios').insert(
-      owners.map((owner, index) => ({
-        contrato_id: contract.id,
-        propietario_id: owner.id,
-        porcentaje: input.owners[index].porcentaje,
-        principal: index === 0,
-      })),
+    const contract = await insertContract(
+      input,
+      property.id,
+      owners.map((owner) => owner.id),
+      tenant.id,
     )
-    if (relationsError) throw relationsError
+    contractId = contract.id
 
     return {
       contractId: contract.id,
@@ -321,7 +316,7 @@ async function insertTenant(
 async function insertContract(
   input: LeaseWorkflowInput,
   propertyId: string,
-  primaryOwnerId: string,
+  ownerIds: string[],
   tenantId: string,
 ): Promise<{ id: string }> {
   const start = new Date(`${input.contract.fechaInicio}T12:00:00`)
@@ -332,8 +327,11 @@ async function insertContract(
     .from('contratos_alquiler')
     .insert({
       propiedad_id: propertyId,
-      propietario_id: primaryOwnerId,
+      propietario_id: ownerIds[0],
       inquilino_id: tenantId,
+      propietarios_ids: ownerIds,
+      inquilinos_ids: [tenantId],
+      garantes_ids: [],
       plazo_contrato_id: input.contract.plazoContratoId,
       moneda_cobro_id: input.contract.monedaCobroId,
       tipo_actualizacion_valor_id: input.contract.tipoActualizacionValorId,

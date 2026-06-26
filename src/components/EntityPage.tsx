@@ -42,8 +42,7 @@ export function EntityPage({ module, renderRowActions }: EntityPageProps) {
     flex: 1,
     minWidth: 140,
     valueFormatter: (value) =>
-      referenceOptions[column.name]?.find((option) => option.value === String(value))?.label ??
-      formatValue(value, column),
+      formatReferenceValue(value, referenceOptions[column.name]) ?? formatValue(value, column),
   }))
   const columns: GridColDef[] = [
     ...dataColumns,
@@ -243,4 +242,38 @@ function normalizePayload(row: TableRow, columnNames: string[]): TableRow {
         return [key, value]
       }),
   )
+}
+
+function formatReferenceValue(
+  value: unknown,
+  options: Array<{ value: string; label: string }> | undefined,
+): string | undefined {
+  if (!options) return undefined
+
+  if (Array.isArray(value)) {
+    const labels = value
+      .map(String)
+      .map((id) => options.find((option) => option.value === id)?.label ?? id)
+    return labels.length > 0 ? labels.join(' / ') : ''
+  }
+
+  if (typeof value === 'string' && value.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(value)
+      if (Array.isArray(parsed)) {
+        const labels = parsed
+          .map(String)
+          .map((id) => options.find((option) => option.value === id)?.label ?? id)
+        return labels.length > 0 ? labels.join(' / ') : ''
+      }
+    } catch {
+      return undefined
+    }
+  }
+
+  if (value !== null && value !== undefined && value !== '') {
+    return options.find((option) => option.value === String(value))?.label
+  }
+
+  return undefined
 }

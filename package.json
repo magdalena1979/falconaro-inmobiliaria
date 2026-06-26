@@ -13,7 +13,8 @@
     "supabase:push:secure": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/push-supabase.ps1",
     "supabase:seed": "npx supabase db seed",
     "supabase:reset": "npx supabase db reset",
-    "auth:create-superadmin": "node scripts/create-superadmin.mjs"
+    "auth:create-superadmin": "node scripts/create-superadmin.mjs",
+    "migrate:contracts": "tsc -p scripts/migrate-contracts/tsconfig.json && node scripts/migrate-contracts/dist/index.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

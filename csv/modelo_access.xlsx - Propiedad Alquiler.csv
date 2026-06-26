@@ -1,0 +1,542 @@
+NumeroRegistroPropiedad,TipoPropiedad,Direccion,Ciudad,CP,Pais,Monto_Contrato,Comision,SuperficieParcela,SuperficieConstruida,NumerosDormitorios,NumerosBaños,Jardin,Piscina,Garage,Nueva/SegundaMano,Observaciones,Adjuntos,Alquilada,Cartel
+7,Departamento,"Barrio 18 de Abril, Torre 7 Pta. Baja Depto. C",Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+15,Casa,Falucho Norte 361,Azul,7300,Argentina,111600,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,Barrio San Francisco,,TRUE,FALSE
+25,Casa,Prat 25,Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+31,Departamento,España 31,Azul,7300,Argentina,242400,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32,Departamento,Malere 32,Azul,7300,Argentina,2700000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $108000 fact en nov,,FALSE,FALSE
+58,Departamento,Barrio 18 de Abril Torre 5 Depto. 7º C,Azul,7300,Argentina,504000,5,45,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+68,Departamento,Barrio 18 de Abril Torre 6 8º C,Azul,7300,Argentina,388800,5,,,,,FALSE,FALSE,FALSE,,Honorarios $ 7780,,FALSE,FALSE
+69,Local,Bolivar 699,Azul,7300,Argentina,1800000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $100800 - Se facturó la parte en blanco $30000 en sept,,FALSE,FALSE
+81,Casa,Mexico 81,Azul,7300,Argentina,5400000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $108000 fact en dic,,FALSE,FALSE
+98,Departamento,Barrio 18 de Abril Torre 9 8° C,Azul,7300,Argentina,306000,5,40,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+109,Departamento,Guido Spano Norte 109 depto. 1,Azul,7300,Argentina,306000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+112,Duplex,Leyria 504,Azul,7300,Argentina,4800000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $192000 fact en nov,,TRUE,FALSE
+114,Departamento,"Avda. Mitre 847 1° P. ""A""",Azul,7300,Argentina,286200,5,94,93,2,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+115,Casa,Laprida 115,Azul,7300,Argentina,4200000,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $84000,,FALSE,FALSE
+116,Casa,9 de Julio 1160,Azul,7300,Argentina,348000,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,termotanque marca señoral y calefactor/ Honorarios $6960,,FALSE,FALSE
+118,Casa,Argentina 118,Azul,7300,Argentina,216000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,TRUE
+122,Departamento,Barrio Rucci Mon 1 Piso 2 Depto.2,Azul,7300,Argentina,3840000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $153600 fact en feb,,FALSE,TRUE
+124,Departamento,Lavalle 253,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,Nueva,,,TRUE,FALSE
+133,Departamento,Barrio 18 de Abril Torre 8 PB Depto A,Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,TRUE
+134,Casa,El Salvador 134,Azul,7300,Argentina,0,5,,,2,2,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+145,Departamento,Rivadavia 145 Depto. C,Azul,7300,Argentina,1350000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $27000,,FALSE,FALSE
+164,Casa,Moreno 164,Azul,7300,Argentina,3600000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $72000 fact en agosto - Los servicios se los paga al vecino,,FALSE,FALSE
+168,Casa,Lola Mora 168,Azul,7300,Argentina,4200000,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $84000,,TRUE,FALSE
+175,Casa,Lavalle 175 (casa),Azul,7300,Argentina,3600000,5,,,2,1,FALSE,FALSE,FALSE,,"Honorarios $144000/$50000 fact en dic, $94000 en enero",,FALSE,FALSE
+181,Casa,Fournier norte 0181,Azul,7300,Argentina,82800,5,418,53,2,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+202,Casa,San Martín 202,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+203,Departamento,Yrigoyen 203,Azul,7300,Argentina,165600,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+204,Local,Caneva 204,Azul,7300,Argentina,2160000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $43200 fact en feb,,FALSE,FALSE
+205,Departamento,Yrigoyen 205,Azul,7300,Argentina,165600,5,,,,,FALSE,FALSE,FALSE,,Partida 12625,,FALSE,FALSE
+208,Casa,Moreno 208,Azul,7300,Argentina,49800,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,PARTIDA 29844,,FALSE,FALSE
+209,Casa,9 de Julio Norte 0209,Azul,7300,Argentina,0,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+222,Departamento,Tapalqué 222,Azul,7300,Argentina,91080,5,,,2,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+253,Departamento,Prat 253,Azul,7300,Argentina,193200,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+255,Casa,Lavalle 255,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+261,Casa,Leyria 261,Azul,7300,Argentina,7200000,5,,,1,1,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+270,Casa,Olavarría 270,Azul,7300,Argentina,220800,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+280,Departamento,Puan 280 Depto. 5,Azul,7300,Argentina,2520000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $100000 fact en feb,,FALSE,TRUE
+285,Casa,Chaves Norte 0285,Azul,7300,Argentina,5400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $108000 fact en marzo,,TRUE,FALSE
+297,Departamento,Moreno 297 P.A,Azul,7300,Argentina,5280000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $105600 fact en mayo,,FALSE,FALSE
+304,Departamento,Roca 304 PA Depto. A,Azul,7300,Argentina,102120,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+307,Casa,Constitución 307,Azul,7300,Argentina,193200,5,70,,2,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+311,Local,España N° 31 (Local),Azul,7300,Argentina,96600,5,,40,,1,FALSE,FALSE,FALSE,,Partida 21659,,FALSE,FALSE
+321,Local,San Martín 317 (Local),Azul,7300,Argentina,19200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $576000 (3%) fact en marzo,,FALSE,FALSE
+324,Cochera,De Paula 324 Cochera 2,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+328,Departamento,Moreno 328 Depto. B,Azul,7300,Argentina,3960000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $18600/$79200,,FALSE,FALSE
+349,Departamento,1° de Mayo 349,Azul,7300,Argentina,2880000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $57600 fact en agosto,,FALSE,FALSE
+352,Local,25 de Mayo 352,Azul,7300,Argentina,960000,5,,,,1,FALSE,FALSE,FALSE,Nueva,No paga depósito/Honorarios $48000 fact en oct,,TRUE,FALSE
+369,Casa,Castellar 369,Azul,7300,Argentina,6300000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $126000,,FALSE,FALSE
+374,Departamento,"Barrio 18 de Abril Torre 3 Piso 7 Depto. ""D""",Azul,7300,Argentina,4800000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $192000 fact en enero,,FALSE,FALSE
+384,Departamento,Maipú 382,Azul,7300,Argentina,179400,5,,,1,1,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+386,Cochera,De Paula 386,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,COCHERA LINGUA,,FALSE,FALSE
+395,Casa,Lavalle 395,Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+397,Local,Lavalle 397,Azul,7300,Argentina,228960,5,,,,1,FALSE,FALSE,FALSE,2 ° Mano,Franco Inda 2281 57-2964,,TRUE,FALSE
+401,Local,Amado Diab 401,Azul,7300,Argentina,2520000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $163200 fact en oct,,FALSE,FALSE
+406,Casa,Alvear 406,Azul,7300,Argentina,41400,5,,,1,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+410,Casa,Maipú 410,Azul,7300,Argentina,7680000,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+412,Casa,Guido Spano 412,Azul,7300,Argentina,162840,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+414,Local,Prat 414,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+421,Casa,Islas Malvinas 421,Azul,7300,Argentina,204000,5,,,2,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+423,Casa,Mendoza 423,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+440,Departamento,Alvear 440 1/2 Depto. D,Azul,7300,Argentina,8400000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $336000 fact en julio,,FALSE,FALSE
+441,Departamento,San Martín 441 1° piso Depto. C,Azul,7300,Argentina,124200,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,estaba alquilado por Connoly recibimos carpeta 15/9/11,,TRUE,FALSE
+450,Departamento,Arenales 450,Azul,7300,Argentina,5040000,5,30,30,,1,FALSE,FALSE,FALSE,,Honorarios $100800,,FALSE,FALSE
+451,Departamento,Comandante Franco 451,Azul,7300,Argentina,8800000,5,40,,1,1,TRUE,FALSE,TRUE,,"Honorarios $355200, $177600 fact en mayo",,FALSE,FALSE
+455,Departamento,Comandante Franco 455,Azul,7300,Argentina,612000,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+458,Local,San Martín 464,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+460,Departamento,Belgrano 460 11° B,Azul,7300,Argentina,13200000,5,,,2,2,FALSE,FALSE,FALSE,2 ° Mano,"Honorarios $528000, $150000 fact en enero, $202000 en feb y $176000 en marzo",,FALSE,FALSE
+463,Departamento,Yrigoyen 463 P.A,Azul,7300,Argentina,5040000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $100800 fact en marzo,,FALSE,FALSE
+466,Departamento,Guido Spano 466,Azul,7300,Argentina,6720000,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $268800 fact en abril,,TRUE,FALSE
+468,Departamento,Guido Spano 468,Azul,7300,Argentina,3240000,5,,,1,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $129600 fcat en marzo,,FALSE,FALSE
+470,Local,Leyría 474,Azul,7300,Argentina,121800,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+473,Departamento,Yrigoyen 473 3° Piso A,Azul,7300,Argentina,12720000,5,,,3,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $508800 fact en nov,,TRUE,FALSE
+474,Departamento,Guido Spano 474,Azul,7300,Argentina,9120000,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $364800 fact en oct,,FALSE,FALSE
+475,Departamento,"Necochea 475 Depto. ""E""",Azul,7300,Argentina,4800000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $192000 ----- $100000 fact en dic y $92000 en junio,,FALSE,FALSE
+486,Departamento,De las Carretas N° 488,Azul,7300,Argentina,75600,5,,,3,2,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+488,Departamento,Malere 488 P.A.,Azul,7300,Argentina,4800000,5,,,1,1,FALSE,TRUE,FALSE,2 ° Mano,Honorarios $192000 fact en feb,,FALSE,FALSE
+489,Casa,Rivadavia 489,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+490,Casa,Malvinas 490,Azul,7300,Argentina,3480000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $69600 fact en oct,,FALSE,FALSE
+494,Departamento,"Comercio 494 1° P. "" B """,Azul,7300,Argentina,8160000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $326400 fact en sept,,TRUE,FALSE
+495,Departamento,Cáneva 495,Azul,7300,Argentina,7680000,5,,,1,1,FALSE,FALSE,FALSE,,"Honorarios $307200, $152000 fact en nov, $80000 en dic, $75200 en dic",,FALSE,FALSE
+497,Casa,Cáneva 497 (Garaje),Azul,7300,Argentina,14400000,5,110,,2,1,TRUE,FALSE,TRUE,,Honorarios $576000,,FALSE,FALSE
+500,Departamento,Prat 516 Depto. C,Azul,7300,Argentina,171600,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+501,Local,Mitre 501,Azul,7300,Argentina,14400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $576000/ Se entregaron $100000 a Nahuel,,FALSE,FALSE
+517,Departamento,Moreno 517,Azul,7300,Argentina,234000,5,,,2,1,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+518,Local,Cáneva 514,Azul,7300,Argentina,4200000,5,,95,,1,FALSE,FALSE,FALSE,Nueva,Honorarios $192000,,FALSE,FALSE
+520,Local,Cáneva 520,Azul,7300,Argentina,3000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $576000 fact en sept,,FALSE,FALSE
+521,Casa,Fuerte Federación 521,Azul,7300,Argentina,468000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+526,Casa,M.  Cáneva 526,Azul,7300,Argentina,,5,,,4,2,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+529,Departamento,Mesura 529,Azul,7300,Argentina,55200,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+530,Casa,Castellar 530,Azul,7300,Argentina,0,5,,,3,2,TRUE,FALSE,TRUE,2 ° Mano,resto fct en oct,,FALSE,FALSE
+541,Local,Moreno 551,Azul,7300,Argentina,79200,5,,,,1,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+542,Casa,Leyria 542,Azul,7300,Argentina,10200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $204000,,FALSE,FALSE
+552,Local,San Martín 552,Azul,7300,Argentina,10200000,5,,,,,FALSE,FALSE,FALSE,,"Pda 21226 / Honorarios $480000, $200000 fact en marzo, $100000 en mayo/Honorarios actual $ 204000",,FALSE,FALSE
+564,Local,Malere 564,Azul,7300,Argentina,52200,5,,,,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+574,Casa,Alfonsina Storni 574,Azul,7300,Argentina,124200,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+576,Departamento,San Martín 576,Azul,7300,Argentina,3720000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $74400 fact en nov,,FALSE,FALSE
+581,Casa,1° de Mayo 581,Azul,7300,Argentina,5040000,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $100800 fact en enero,,TRUE,FALSE
+582,Casa,Constitución 582,Azul,7300,Argentina,7680000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $288000 fact en oct,,FALSE,FALSE
+584,Casa,Olavarría 584,Azul,7300,Argentina,0,5,,,3,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+586,Casa,De Paula 586,Azul,7300,Argentina,501600,5,,,4,2,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $10030,,TRUE,FALSE
+587,Departamento,Falucho 587 P.A.,Azul,7300,Argentina,5520000,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $110400 fact en feb,,FALSE,FALSE
+588,Departamento,Constitución 588,Azul,7300,Argentina,6240000,5,,,2,1,FALSE,TRUE,FALSE,,Honorarios $249600 fact en marzo,,FALSE,FALSE
+589,Local,Burgos 589,Azul,7300,Argentina,4800000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $96000 fact en nov,,FALSE,FALSE
+591,Local,Moreno 591,Azul,7300,Argentina,10800000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $432000 fact en agosto,,FALSE,FALSE
+605,Departamento,"San Martín 605 3° Piso Depto. ""B""",Azul,7300,Argentina,0,5,,,3,2,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+610,Departamento,"Salta 610 Depto. ""B""",Azul,7300,Argentina,6480000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $129600 - Ojo la direccion para ceal es 25 de mayo 199 Depto. B/ Se cobra el 2% de honorarios,,FALSE,FALSE
+611,Casa,Moreno Norte 611,Azul,7300,Argentina,110400,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+612,Casa,Olavarria 612,Azul,7300,Argentina,12000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $240000 (Se cobra el 2%),,FALSE,FALSE
+613,Departamento,Olavarria 610 Depto. 3,Azul,7300,Argentina,3600000,5,,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+614,Casa,Laprida 614,Azul,7300,Argentina,212400,5,,,2,1,TRUE,TRUE,TRUE,2 ° Mano,,,FALSE,FALSE
+615,Departamento,Laprida 615 Depto. 9,Azul,7300,Argentina,9600000,5,,,,,FALSE,FALSE,FALSE,,"Honorarios $384000, $100000 fact en oct",,FALSE,FALSE
+618,Departamento,"Rivas 618 P.B ""3""",Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+620,Departamento,"Salta 610 Depto. ""A""",Azul,7300,Argentina,3960000,5,45,,1,1,FALSE,FALSE,FALSE,,Honorarios $79200 fact en julio,,FALSE,FALSE
+621,Local,Yrigoyen 621,Azul,7300,Argentina,16800000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $672000,,TRUE,FALSE
+623,Departamento,H. Yrigoyen 623,Azul,7300,Argentina,107640,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+625,Departamento,Rivas 625,Azul,7300,Argentina,4800000,5,,,1,1,TRUE,FALSE,FALSE,,Honorarios $96000 fact en dic,,FALSE,FALSE
+627,Casa,O'Connor 627,Azul,7300,Argentina,91080,5,,68,3,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+629,Local,Mitre 629,Azul,7300,Argentina,1425000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $122000 (Monto arreglado por Diego) $40000 facturados en julio y $40000 en sept,,FALSE,FALSE
+637,Departamento,Moreno 637,Azul,7300,Argentina,202500,5,,,3,2,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+653,Departamento,Sgto. Cabral 653 Depto. B,Azul,7300,Argentina,3360000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $67200 fact en sept,,FALSE,FALSE
+658,Casa,España 658,Azul,7300,Argentina,207000,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+659,Local,Arenales 659,Azul,7300,Argentina,600000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $72000,,FALSE,FALSE
+661,Local,Arenales 661,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+663,Local,Arenales 663,Azul,7300,Argentina,1200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $150000 fact en agosto,,FALSE,FALSE
+667,Casa,Comercio 667,Azul,7300,Argentina,480000,5,,,2,1,FALSE,FALSE,TRUE,2 ° Mano,Honorarios $9600 fact en oct,,FALSE,FALSE
+675,Casa,Los Caldenes 675,Azul,7300,Argentina,343200,5,,,2,2,TRUE,FALSE,TRUE,Nueva,,,TRUE,FALSE
+691,Departamento,Rauch 691,Azul,7300,Argentina,62100,0,,,2,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+693,Departamento,Avendaño 693 Depto. A,Azul,7300,Argentina,5760000,5,40,,1,1,FALSE,FALSE,FALSE,,Honorarios $230400 fact en enero,,FALSE,FALSE
+698,Departamento,Prat 698 P.B.,Azul,7300,Argentina,2520000,5,,,1,1,FALSE,FALSE,FALSE,,"Honorarios $100800 - $20000 fact en nov, $80800 en julio",,FALSE,FALSE
+699,Depósito,Gral. Paz 699,Azul,7300,Argentina,102000,5,,85,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+701,Local,San Martín 701,Azul,7300,Argentina,1200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $108000 fact en nov - Nuevo contrato a Nombre de Florencia Lucia Ottino (Hija),,FALSE,FALSE
+705,Departamento,BECO Torre 9 2° A,Azul,7300,Argentina,193200,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+710,Casa,Alvear 710,Azul,7300,Argentina,5400000,5,,,,,FALSE,FALSE,FALSE,,Depósito inicial $8500/ Honorarios $108000 fact en feb,,FALSE,FALSE
+720,Local,25 de Mayo 720,Azul,7300,Argentina,4800000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $96000 fact en oct,,FALSE,FALSE
+725,Local,San Martin 725,Azul,7300,Argentina,14400000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+729,Departamento,San Martín 729,Azul,7300,Argentina,6480000,5,,,3,1,TRUE,FALSE,FALSE,,Pda 47633 - Honorarios $33600 fact en feb/ Honorarios actual $96000/$ 129600,,FALSE,FALSE
+733,Casa,Malere 737,Azul,7300,Argentina,3600000,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $72000,,TRUE,FALSE
+736,Departamento,Guido Spano 736 (local),Azul,7300,Argentina,4680000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $96000/$93600,,TRUE,FALSE
+742,Departamento,Malere 742,Azul,7300,Argentina,6840000,5,,,2,1,TRUE,FALSE,FALSE,,Honorarios $136800,,TRUE,FALSE
+747,Local,Roca 747,Azul,7300,Argentina,6000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $240000 fact en oct,,FALSE,FALSE
+749,Local,Roca 749,Azul,7300,Argentina,2280000,5,,,,,FALSE,FALSE,FALSE,,No le cobra Honorarios,,FALSE,FALSE
+755,Departamento,Calle 45 N° 755,La Plata,1900,Argentina,93840,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+770,Local,Yrigoyen 770 local D,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+772,Local,Caneva 796,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+775,Departamento,Falucho 775 Depto. 1,Azul,7300,Argentina,27000,5,,,1,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+779,Casa,Cte. Franco 779,Azul,7300,Argentina,111600,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+786,Cochera,Moreno 786,Azul,7300,Argentina,24000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+790,Galpón,Caneva 790,Azul,7300,Argentina,3600000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $72000 fact en julio,,FALSE,FALSE
+794,Local,Caneva 794(local 1),Azul,7300,Argentina,3000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $60000 fact en julio,,FALSE,FALSE
+796,Local,Caneva 794 (Local 2),Azul,7300,Argentina,1980000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $79200,,FALSE,FALSE
+797,Local,Arenales 797,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+802,Local,Colon 802,Azul,7300,Argentina,960000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $96000 fact en sept,,FALSE,FALSE
+804,Local,Rauch 804,Azul,7300,Argentina,3000000,5,,,3,3,FALSE,FALSE,FALSE,,Honorarios $60000,,FALSE,FALSE
+809,Local,Moreno 809,Azul,7300,Argentina,382800,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $ 43200,,FALSE,FALSE
+810,Depósito,Rauch 810,Azul,7300,Argentina,2520000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $50400 fact en oct  (Se arregló el 2%),,FALSE,FALSE
+815,Departamento,Escalada 815 Depto. 2,Azul,7300,Argentina,0,5,40,,1,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+825,Local,Rauch 825,Azul,7300,Argentina,143340,5,,,,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+854,Departamento,Rivas 854,Azul,7300,Argentina,12000000,5,70,55,1,1,FALSE,FALSE,FALSE,,"Honorarios $480000, $200000, $180000 fact en enero y $100000 en marzo",,FALSE,FALSE
+863,Casa,Pringles 863,Azul,7300,Argentina,144000,0,,,1,1,TRUE,FALSE,FALSE,,,,TRUE,FALSE
+876,Local,Mitre 876,Azul,7300,Argentina,7920000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $316800 fact en enero,,TRUE,FALSE
+878,Casa,Mitre 878,Azul,7300,Argentina,8640000,5,110,,3,2,FALSE,FALSE,FALSE,,Honorarios $70800/$172800,,FALSE,FALSE
+880,Local,Mitre 880,Azul,7300,Argentina,6000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $240000 fact en dic,,FALSE,FALSE
+881,Departamento,Moreno 881 Depto. 1,Azul,7300,Argentina,128880,5,,,1,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+887,Departamento,Bogliano 887,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,Nueva,,,TRUE,FALSE
+890,Local,San Martín 890,Azul,7300,Argentina,1800000,5,,,,,FALSE,FALSE,FALSE,,Pda 29159 - Honorarios $144000 fact en junio,,FALSE,FALSE
+897,Departamento,Mitre 897,Azul,7300,Argentina,24000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $960000 más IVA,,FALSE,FALSE
+910,Departamento,Lavalle 910 P.A. Depto. 6,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,TRUE,Nueva,,,FALSE,FALSE
+913,Local,Mitre 913,Azul,7300,Argentina,4200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $84000 fact en agosto / Depósito anterior $27000,,FALSE,FALSE
+930,Departamento,Sarmiento 930 depto. 2,Azul,7300,Argentina,90000,5,,,1,,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+935,Departamento,Olavarría 935,Azul,7300,Argentina,8400000,5,42,,1,1,FALSE,FALSE,TRUE,Nueva,Honorarios $336000 fact en abril,,FALSE,FALSE
+941,Departamento,Lavalle 941 Depto. 2,Azul,7300,Argentina,2700000,5,,,1,1,TRUE,FALSE,TRUE,Nueva,"Honorarios $108000 - $50000 fact en sept, $58000 en oct",,TRUE,FALSE
+946,Local,Bolivar 946,Azul,7300,Argentina,9600000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $384000,,FALSE,FALSE
+947,Local,Olavarría 947,Azul,7300,Argentina,96600,5,,,,1,FALSE,FALSE,FALSE,Nueva,,,TRUE,FALSE
+954,Departamento,España 954 P.B Depto. 2,Azul,7300,Argentina,2520000,5,,,1,1,TRUE,TRUE,FALSE,,Honorarios $100800 fact en oct,,FALSE,FALSE
+958,Casa,Prat 958,Azul,7300,Argentina,420000,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+968,Casa,Castellar 968,Azul,7300,Argentina,0,5,,,2,1,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+973,Casa,Tiro Federal 973,Azul,7300,Argentina,105600,5,,,2,1,TRUE,FALSE,TRUE,,,,TRUE,FALSE
+980,Casa,Fournier 980,Azul,7300,Argentina,151200,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+982,Casa,Castellar 982,Azul,7300,Argentina,0,5,200,125,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+993,Local,Mitre 993,Azul,7300,Argentina,4500000,5,37,,,1,FALSE,FALSE,FALSE,,Honorarios $336000 fact en marzo,,FALSE,FALSE
+999,Local,Mitre 999,Azul,7300,Argentina,4800000,5,,,,,FALSE,FALSE,FALSE,Nueva,Honorarios $264000,,FALSE,FALSE
+1025,Casa,Olavarría 1025,Azul,7300,Argentina,10800000,5,110,,3,1,TRUE,FALSE,TRUE,,Honorarios $216000,,FALSE,FALSE
+1035,Casa,Alberdi 1035,Azul,7300,Argentina,0,5,,,1,1,TRUE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+1044,Departamento,Puán 1044 depto. 2,Azul,7300,Argentina,96000,0,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+1072,Casa,Alvear 1072,Azul,7300,Argentina,291600,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+1083,Casa,De Paula 946,Azul,7300,Argentina,5040000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $100800 fact en marzo,,FALSE,FALSE
+1091,Departamento,"25 de mayo 1091 PA ""A""",Azul,7300,Argentina,40500,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Pda 14682,,FALSE,FALSE
+1095,Casa,Leyría 1095,Azul,7300,Argentina,7200000,5,,,2,1,TRUE,FALSE,TRUE,,Honorarios $144000 fact en julio,,FALSE,FALSE
+1111,Casa,Belgrano 1111,Azul,7300,Argentina,6960000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $278400 fact en mayo,,FALSE,FALSE
+1112,Casa,Castellar 1112,Azul,7300,Argentina,234600,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+1121,Departamento,"Aldaz y Rivadavia, Cuerpo 12, Piso 1° B, Barrio Carús",Azul,7300,Argentina,57600,5,,,3,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+1126,Departamento,Roca 1126,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1146,Local,Avda. Piazza 1146,Azul,7300,Argentina,2760000,5,,,,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $240000 fact en sept,,FALSE,FALSE
+1148,Depósito,Arenales 1148,Azul,7300,Argentina,118200,5,,,,,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+1151,Local,Mitre 115,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1159,Casa,Corrientes 1159,Azul,7300,Argentina,0,5,,,2,1,TRUE,FALSE,TRUE,,,,TRUE,FALSE
+1160,Depósito,Arenales 1160,Azul,7300,Argentina,76200,5,66,66,,1,FALSE,FALSE,FALSE,Nueva,,,TRUE,FALSE
+1168,Departamento,Yrigoyen 1170 Depto. 4,Azul,7300,Argentina,7680000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $307200 fact en agosto,,TRUE,FALSE
+1187,Casa,Amado Diab 1187,Azul,7300,Argentina,6000000,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $240000 + iva fact en mayo,,FALSE,FALSE
+1213,Galpón,Av J B Justo 1101,Azul,7300,Argentina,132000,5,,,,,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+1215,Casa,H. Yrigoyen 1215,Azul,7300,Argentina,,5,,,1,1,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+1217,Casa,Yrigoyen 1217,Azul,7300,Argentina,4200000,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $10800/$12000/$84000,,TRUE,FALSE
+1226,Local,Burgos 1226,Azul,7300,Argentina,5040000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $115200 fact en enero,,FALSE,FALSE
+1244,Departamento,Avda. Piazza 1242 Depto. B,Azul,7300,Argentina,68760,5,,,1,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+1281,Casa,Caneva 1281,Azul,7300,Argentina,175500,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1304,Casa,Burgos 1304,Azul,7300,Argentina,179400,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+1310,Galpón,Juan B.Justo 1310,Azul,7300,Argentina,9600000,5,,,,,FALSE,FALSE,FALSE,,"Comparte agua con Perez - Honorarios $384000, $100.000 fact en julio, $284000 en dic",,FALSE,FALSE
+1312,Galpón,Juan B. Justo 1312,Azul,7300,Argentina,6720000,5,,,,,FALSE,FALSE,FALSE,,Comparte agua con Coronel/ Honorarios $134400,,FALSE,FALSE
+1314,Galpón,Juan B. Justo 1314,Azul,7300,Argentina,168000,5,,,,1,FALSE,FALSE,FALSE,,Comparte agua con Retamoso (1320),,FALSE,FALSE
+1320,Galpón,Juan B. Justo 1320,Azul,7300,Argentina,386400,5,,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1330,Galpón,Juan B. Justo 1330,Azul,7300,Argentina,5880000,5,,,,1,FALSE,FALSE,FALSE,,Comparte agua con Leandro Palermo/ Honorarios $117600,,FALSE,FALSE
+1380,Galpón,Belgrano 1380,Azul,7300,Argentina,48000,5,,240,,,FALSE,FALSE,TRUE,,,,FALSE,FALSE
+1415,Casa,San Martín 1415,Azul,7300,Argentina,103500,5,,,3,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+1423,Casa,Rauch 1423,Azul,7300,Argentina,193200,5,,,2,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+1441,Casa,Moreno 1141,Azul,7300,Argentina,5160000,5,,,2,2,FALSE,FALSE,TRUE,,Honorarios $103200 fact en marzo,,FALSE,FALSE
+1442,Casa,De Paula 1442,Azul,7300,Argentina,8400000,5,,,2,2,TRUE,FALSE,FALSE,,Honorarios $168000,,FALSE,FALSE
+1450,Departamento,Rivadavia 145 Depto. B,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+1454,Departamento,Rivadavia 145 Depto. D,Azul,7300,Argentina,0,5,,,2,2,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1473,Garage,Rauch 1473,Azul,7300,Argentina,15930,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+1494,Departamento,España 1494 Depto. B,Azul,7300,Argentina,2520000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $50400 (se cobraron solo $26000),,FALSE,FALSE
+1555,Departamento,Barrio 18 de Abril Torre 1  5° B,Azul,7300,Argentina,4320000,5,,,2,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $86400 fact en enero,,FALSE,FALSE
+1567,Galpón,Olavar,Azul,7300,Argentina,301080,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+1593,Galpón,Juan B. Justo 1593,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1595,Galpón,Juan B. Justo 1595,Azul,7300,Argentina,6480000,5,,58,,1,FALSE,FALSE,FALSE,,Comparte agua con J B Justo 1593 Nasello - Honorarios $259200 fact en feb,,FALSE,FALSE
+1615,Galpón,Juan B. Justo 1619,Azul,7300,Argentina,5400000,5,225,101,,,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $108000 - No cobrar agua porque no está conectada a la red -,,FALSE,FALSE
+1751,Departamento,Lavalle 175 (depto B),Azul,7300,Argentina,7680000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $307200 fact en agosto,,FALSE,FALSE
+1823,Departamento,Chaves 18 Depto. 23,Azul,7300,Argentina,243000,5,,,,,FALSE,FALSE,FALSE,,Partida N° 49361/49395,,FALSE,FALSE
+1825,Departamento,Chaves 50 1° piso depto. N° 25,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+1878,Departamento,"Barrio 18 de Abril, Torre 7, Piso 8° C",Azul,7300,Argentina,165600,5,,,1,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+1901,Departamento,San Martín 190 Depto. 1,Azul,7300,Argentina,28000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,,,FALSE,FALSE
+1902,Departamento,San Martín 190 Depto. 6,,7300,Argentina,9600000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,"Honorarios $384000, $100000 fact en enero, $284000 en enero",,FALSE,FALSE
+1903,Departamento,San Martín 190 Depto. 3,Azul,7300,Argentina,3960000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $79200 fact en agosto,,TRUE,FALSE
+1904,Departamento,San Martín 190 depto. 4,Azul,7300,Argentina,2700000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,Honorarios $80000 ( Monto arreglado con Diego) facturados en agosto,,FALSE,FALSE
+1905,Departamento,San Martín 190 Depto. 5,Azul,7300,Argentina,10080000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,"Honorarios $403200, $100000 fact en dic, $170000 en dic, $133200 en feb",,FALSE,FALSE
+1906,Departamento,San Martín 190 Depto. 2,Azul,7300,Argentina,9600000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,"Honorarios: $384.000; $100000 fact en enero, $104000 en feb, $180000 en marzo",,TRUE,FALSE
+1907,Departamento,San Martín 190 Depto. 7,Azul,7300,Argentina,9360000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $374400 fact en feb,,TRUE,FALSE
+1981,Departamento,25 de Mayo norte 198 1º Piso B,Azul,7300,Argentina,8400000,5,45,,1,1,FALSE,FALSE,FALSE,,Honorarios $336000 fact en junio,,FALSE,FALSE
+1982,Departamento,25 de Mayo norte 198 1º Piso A,Azul,7300,Argentina,4200000,5,40,,1,1,FALSE,FALSE,FALSE,,Honorarios $43200/$ 84000,,FALSE,FALSE
+1983,Departamento,25 de Mayo norte 198 1º Piso C,Azul,7300,Argentina,4560000,5,35,,1,1,FALSE,FALSE,FALSE,,Honorarios $182400 fact en dic,,FALSE,FALSE
+1984,Departamento,25 de Mayo norte 198 1º Piso D,Azul,7300,Argentina,8400000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,Honorarios $336000,,FALSE,FALSE
+2225,Departamento,"Billinghurst 2225 Piso 6° Depto. ""C""",Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+2385,Casa,Necochea 2385,Azul,7300,Argentina,306000,5,,,3,1,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+2808,Departamento,Puan 280 Depto 8,Azul,7300,Argentina,5400000,5,,50,1,1,FALSE,FALSE,FALSE,,Honorarios $216000 fact en marzo,,FALSE,FALSE
+2971,Galpón,Colectora Ruta Nac. N° 3 Esquina Tandil,Azul,7300,Argentina,,5,300,200,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+2990,Local,Mitre 575,Azul,7300,Argentina,6000000,5,150,150,,2,FALSE,FALSE,FALSE,,Honorarios $240000,,FALSE,FALSE
+3110,Casa,1° de Mayo Norte 311,Azul,7300,Argentina,11520000,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,"Honorarios $460800, $100000 fact en agosto, $380000 en sept",,TRUE,FALSE
+3193,Departamento,San Martín 319 depto. C,Azul,7300,Argentina,10800000,5,70,,,,FALSE,FALSE,FALSE,,Honorarios $432000,,FALSE,FALSE
+3240,Cochera,De Paula 324 Cochera 3,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+3241,Departamento,De Paula 324 Depto. 1,Azul,7300,Argentina,4920000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $98400 fact en enero,,FALSE,FALSE
+3242,Departamento,De Paula 324 Depto. 2,Azul,7300,Argentina,4800000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $192000 fact en oct,,FALSE,FALSE
+3244,Cochera,De Paula 324 Cochera 4,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+3246,Cochera,De Paula 324 Cochera 6,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+3247,Cochera,De Paula 324 Cochera 7,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+3261,Departamento,Pringles 326 Depto. 1,Azul,7300,Argentina,2340000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $93600 - $24300 facturados en agosto,,FALSE,FALSE
+3262,Departamento,Pringles 326 Depto. 2,Azul,7300,Argentina,8400000,5,,,1,1,FALSE,FALSE,FALSE,,"Honorarios $336000, $150000 fact en sept",,FALSE,FALSE
+3263,Departamento,Pringles 326 depto. 3,Azul,7300,Argentina,1872000,5,50,,1,1,FALSE,FALSE,FALSE,,"Honorarios $74880 - $20000 facturados en junio, $24000 en julio, $30800 en sept",,TRUE,FALSE
+3264,Departamento,Pringles 326 Depto. 4,Azul,7300,Argentina,3240000,5,,,1,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $129600 fact en junio,,FALSE,FALSE
+3265,Departamento,Pringles 326 depto. 5,Azul,7300,Argentina,6000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $240000/ Pablo Perafan( 2281-317740),,FALSE,FALSE
+3280,Departamento,Moreno 328 depto. A,Azul,7300,Argentina,6720000,5,,,2,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $268800 - $150000 y $118800 fact en agosto,,FALSE,FALSE
+3498,Casa,1° de Mayo 577,Azul,7300,Argentina,8400000,5,126,101,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $336000,,TRUE,FALSE
+3565,Departamento,Bogliano 206,Azul,7300,Argentina,7920000,5,69,,1,1,TRUE,FALSE,FALSE,,Honorarios $316800 fact en sept,,FALSE,FALSE
+3795,Casa,Rivadavia 711,Azul,7300,Argentina,16200000,5,,,2,1,TRUE,FALSE,TRUE,,Honorarios $324000 fact en feb,,FALSE,FALSE
+3881,Departamento,De Paula 388,Azul,7300,Argentina,0,5,,,1,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+3931,Departamento,Roca 393 1º D,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+3932,Departamento,Lavalle 393 Depto. B,Azul,7300,Argentina,0,5,,50,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+4004,Local, Movimientos caja,Azul,7300,Argentina,1,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+4182,Departamento,Olavarría 418 Depto. B,Azul,7300,Argentina,4200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $168000,,FALSE,FALSE
+4183,Departamento,Olavarría 418 Depto. C,Azul,7300,Argentina,3240000,5,,,1,1,TRUE,FALSE,FALSE,,Honorarios $129600 fact en enero,,FALSE,FALSE
+4345,Casa,Falucho 1027,Azul,7300,Argentina,6000000,5,469,97,,,FALSE,FALSE,FALSE,,NO SE COBRA HONORARIOS,,FALSE,FALSE
+4404,Departamento,Mitre 847 PB,Azul,7300,Argentina,214800,5,65,56,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+4411,Departamento,San Martín 441 1º “C”,Azul,7300,Argentina,114600,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+4481,Departamento,"Arenales 448 1° Piso ""B""",Azul,7300,Argentina,10080000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $403200,,FALSE,FALSE
+4483,Departamento,"Arenales 448 2° ""A""",Azul,7300,Argentina,1800000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $50000 - Facturados en abril,,FALSE,FALSE
+4484,Departamento,"Arenales 448 2° ""C""",Azul,7300,Argentina,2160000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $86400 facturados en sept,,FALSE,FALSE
+4601,Departamento,Belgrano 460 5° A,Azul,7300,Argentina,0,5,,44,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+4602,Departamento,"Belgrano 460 2° ""C""",Azul,7300,Argentina,14400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $576000 fact en marzo,,FALSE,FALSE
+4605,Departamento,"Belgrano 460 5° Piso ""A""",Azul,7300,Argentina,96600,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+4702,Local,Colón 925,Azul,7300,Argentina,300000,5,322,147,,3,TRUE,FALSE,FALSE,,Se vence el contrato el 30/6,,TRUE,FALSE
+4703,Departamento,Yrigoyen 473 3° B,Azul,7300,Argentina,4200000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $84000 fact en junio,,FALSE,FALSE
+4731,Departamento,Yrigoyen 473 1° B,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+4732,Departamento,1º de Mayo 473 Depto. 2,Azul,7300,Argentina,3960000,5,,,1,1,FALSE,FALSE,TRUE,,Honorarios $79200 fact en dic,,FALSE,FALSE
+4733,Departamento,1º de Mayo 473 Depto. 3,Azul,7300,Argentina,5280000,5,30,,1,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $211200 fact en abril,,FALSE,FALSE
+4736,Departamento,1º de mayo 473 depto. 6,Azul,7300,Argentina,157500,5,,,,,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+4741,Local,Alvear 474,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+4753,Departamento,Necochea 475 Depto. C,Azul,7300,Argentina,3120000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $62400,,FALSE,FALSE
+4754,Departamento,Necochea 475 Depto. D,Azul,7300,Argentina,6240000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $249600 fact en agosto,,FALSE,FALSE
+4756,Departamento,"Necochea 475 Depto. ""F""",Azul,7300,Argentina,8400000,5,,,,,FALSE,FALSE,FALSE,,"Honorarios $336000; $100000 fct en oct, $168000 en dic",,FALSE,FALSE
+4806,Departamento,Guido Spano 470 Depto. 2,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+4942,Departamento,Comercio 494 1° A,Azul,7300,Argentina,8640000,5,,,2,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $345600,,FALSE,FALSE
+5202,Departamento,"Yrigoyen 520 2° ""B""",Azul,7300,Argentina,1980000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $79200 fact en oct,,FALSE,FALSE
+5221,Departamento,Prat 522 depto. 1,Azul,7300,Argentina,,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+5223,Duplex,Prat 522 Depto. 3,Azul,7300,Argentina,114707,5,,,1,1,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+5227,Duplex,Prat 522 Depto. 7,Azul,7300,Argentina,139200,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+5228,Departamento,Prat 522 Depto. 8,Azul,7300,Argentina,153000,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+5311,Depósito,1º de Mayo norte 053,Azul,7300,Argentina,96600,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+5392,Departamento,Falucho 539 depto. 2,Azul,7300,Argentina,264000,5,,,1,2,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+5410,Casa,Sarmiento 541,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+5411,Casa,Misiones,Azul,7300,Argentina,96600,5,,,2,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+5412,Departamento,25 de Mayo 541 2° A,Azul,7300,Argentina,8400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $336000 fact en feb,,FALSE,FALSE
+5413,Departamento,25 de Mayo 541 2° C,Azul,7300,Argentina,6600000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $132000,,FALSE,FALSE
+5653,Departamento,San Martín 565 7º D,Azul,7300,Argentina,220800,5,50,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+5749,Local,San Martín 824,Azul,7300,Argentina,9600000,5,200,,,1,TRUE,FALSE,FALSE,,Honorarios $384000,,FALSE,FALSE
+5912,Departamento,San Martín 591 P.A,Azul,7300,Argentina,5520000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $110400,,FALSE,FALSE
+5937,Local,Moreno 539,Azul,7300,Argentina,15600000,5,205,205,,1,FALSE,FALSE,FALSE,,Honorarios $312000,,FALSE,FALSE
+5962,Departamento,Moreno 596 2° C,Azul,7300,Argentina,4920000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $98400 fact en enero,,FALSE,FALSE
+5963,Departamento,Moreno 596 3 A,Azul,7300,Argentina,124200,5,,,3,2,FALSE,FALSE,FALSE,Nueva,,,TRUE,FALSE
+5964,Departamento,Moreno 596 4° A,Azul,7300,Argentina,83700,5,,,3,2,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+5968,Departamento,Moreno 596 8° ¨C¨,Azul,7300,Argentina,6720000,,,,1,1,FALSE,FALSE,FALSE,Nueva,"Honorarios $268800 - $150000 fact en feb, $118800 en abril",,FALSE,TRUE
+5969,Departamento,"Moreno 596 9° ""D""",Azul,7300,Argentina,2160000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $86400 - facturados en mayo,,FALSE,FALSE
+6053,Departamento,San Martín 605 5º C,Azul,7300,Argentina,234600,5,60,,2,1,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+6097,Local,25 de Mayo 675,Azul,7300,Argentina,2820000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $75000 - $40000 fact en nov - $35000 en enero,,FALSE,FALSE
+6101,Departamento,Olavarria 610 Depto. 1,Azul,7300,Argentina,6480000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $160000 fact en dic,,FALSE,FALSE
+6102,Departamento,Olavarria 610 Depto. 2,Azul,7300,Argentina,3000000,5,,,,,FALSE,FALSE,FALSE,,DEPOSITO INICIAL $80000/Honorarios $60000,,FALSE,FALSE
+6103,Departamento,Olavarria 610 Depto. 3,Azul,7300,Argentina,3600000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $144000  fact en enero,,FALSE,FALSE
+6104,Departamento,Olavarria 610 Depto. 4,Azul,7300,Argentina,4560000,5,,,,,FALSE,FALSE,FALSE,,"Honorarios $182400 - $100000 fact en dic, $82400 en abril",,FALSE,FALSE
+6182,Departamento,Rivas 618 depto. 2,Azul,7300,Argentina,7560000,5,,,,,FALSE,FALSE,FALSE,,Pda 50697 / Honorarios $151200 fact en julio,,FALSE,FALSE
+6210,Local,Mitre 621,Azul,7300,Argentina,5400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $108000 fact en feb,,FALSE,FALSE
+6231,Departamento,Yrigoyen 623,Azul,7300,Argentina,3960000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $79200 fct en feb,,FALSE,FALSE
+6270,Casa,O'connor 627,Azul,7300,Argentina,6600000,5,,,3,1,TRUE,FALSE,FALSE,,Honorarios $132000 fact en marzo,,FALSE,FALSE
+6327,Casa,Maipú 390,Azul,7300,Argentina,0,5,340,189,3,1,TRUE,FALSE,TRUE,,,,TRUE,FALSE
+6331,Departamento,58 Nº 633 1/2 Torre 3 P.2 Depto. 2,La Plata,7300,Argentina,4560000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $91200 fact en marzo,,FALSE,FALSE
+6532,Departamento,Sgto. Cabral 653 Depto. A,Azul,7300,Argentina,9600000,5,,,1,1,TRUE,FALSE,FALSE,Nueva,Honorarios $ 384000,,FALSE,FALSE
+6548,Departamento,Lavalle 700 depto,Azul,7300,Argentina,1560000,5,30,,,1,FALSE,FALSE,FALSE,,Honorarios $31200 fact en agosto,,FALSE,FALSE
+6611,Departamento,Avendaño 661 Depto. 1,Azul,7300,Argentina,7920000,5,,,1,1,TRUE,FALSE,FALSE,,Amueblado - Honorarios $316800/ $150000 fact en enero,,FALSE,TRUE
+6671,Departamento,Catriel 667,Azul,7300,Argentina,4080000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $81600,,FALSE,FALSE
+6679,Departamento,Calle 6 Nº 667 9º F,La Plata,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+6913,Local,San Martín 925,Azul,7300,Argentina,5040000,5,70,70,,1,FALSE,FALSE,FALSE,,Honorarios $100800,,FALSE,FALSE
+6932,Departamento,Avendaño 693 Depto. B,Azul,7300,Argentina,4560000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $182400,,FALSE,FALSE
+6972,Departamento,Gral. Paz 697 Depto. 2,Azul,7300,Argentina,157800,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+6981,Departamento,Las Flores 698 Depto. 1,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,Dirección real Catriel 671 PB Depto. 1,,FALSE,FALSE
+6985,Departamento,Las Flores 698 Dpto. 5,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+6991,Casa,Pringles 879,Azul,7300,Argentina,5520000,5,168,114,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $110400 fact en feb,,TRUE,FALSE
+6992,Departamento,Gral. Paz 697 Depto. 2,Azul,7300,Argentina,148500,5,,,1,1,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+7001,Departamento,Lavalle 700 (Depto. Interno),Azul,7300,Argentina,1440000,5,30,,1,1,FALSE,FALSE,FALSE,,Luz y gas los paga al propietario/ Honorarios $28800,,FALSE,FALSE
+7139,Local,San Martin 591,Azul,7300,Argentina,3960000,5,,21,,1,FALSE,FALSE,FALSE,,Honorarios $240000 fact en agosto,,FALSE,FALSE
+7199,Departamento,Tapalque 224,Azul,7300,Argentina,51000,5,,,,,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+7251,Departamento,San Martín 880,Azul,7300,Argentina,21600000,5,,,2,1,FALSE,FALSE,TRUE,,"Honorarios $864000, $500000 fact en marzo",,FALSE,FALSE
+7259,Departamento,República Dominicana N° 7 (259) Depto.  A,Azul,7300,Argentina,4560000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $182400 fact en dic,,FALSE,FALSE
+7271,Departamento,De Paula 443,Azul,7300,Argentina,42900,5,,,3,3,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+7341,Departamento,Castellar 734 1º Piso Depto. A (Frente),Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+7342,Departamento,Castellar 734 1º Piso Depto. B,Azul,7300,Argentina,66000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $ 1320,,FALSE,FALSE
+7361,Departamento,Guido Spano 736 Depto. 1,Azul,7300,Argentina,4080000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $81600,,FALSE,FALSE
+7433,Departamento,Corrientes 433,Azul,7300,Argentina,281520,5,120,110,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+7701,Departamento,Arenales 770 PA,Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+7702,Local,H. Yrigoyen 770 (Lavadero),Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+7752,Departamento,Falucho 775 depto. 2,Azul,7300,Argentina,103200,5,,,1,1,FALSE,FALSE,TRUE,Nueva,,,TRUE,FALSE
+7754,Departamento,Falucho 775 Depto. 4,Azul,7300,Argentina,148500,5,,,1,1,FALSE,FALSE,TRUE,,,,FALSE,FALSE
+7792,Departamento,Cte. Franco 777,Azul,7300,Argentina,110400,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+7960,Local,Caneva 796 1/2,Azul,7300,Argentina,8400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $336000,,FALSE,FALSE
+8151,Departamento,Escalada 815 Depto. 1,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+8153,Departamento,Escalada 815 depto. 3,Azul,7300,Argentina,179400,5,,,1,1,FALSE,FALSE,TRUE,,,,FALSE,FALSE
+8222,Casa,Caneva 430,Azul,7300,Argentina,0,5,259,178,3,2,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+8245,Departamento,Avda. Mitre 82 Depto. 4 y 5,Azul,7300,Argentina,262200,5,92,,2,2,FALSE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+8468,Casa,Rivadavia 420,Azul,7300,Argentina,12000000,5,330,134,2,1,TRUE,FALSE,TRUE,,Honorarios $480000 fact en abril,,FALSE,FALSE
+8471,Departamento,"Avda. Mitre 847 1° P. ""A""",Azul,7300,Argentina,192000,5,94,94,2,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+8472,Departamento,Mitre 847 2 A,Azul,7300,Argentina,486900,5,92,87,2,1,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+8641,Casa,Lavalle 864 PB,Azul,7300,Argentina,,5,,,2,1,FALSE,FALSE,FALSE,,Con terraza,,TRUE,FALSE
+8779,Local,9 de Julio 468 (Local),Azul,7300,Argentina,0,5,60,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+8802,Casa,25 de Mayo 430,Azul,7300,Argentina,,5,,,4,2,TRUE,TRUE,TRUE,2 ° Mano,,,FALSE,FALSE
+8809,Local,Avda. Piazza 1.146,Azul,7300,Argentina,53640,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+8812,Departamento,Moreno 881 Depto. 2,Azul,7300,Argentina,156600,5,,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+8998,Local,Amado Diab 323,Azul,7300,Argentina,10800000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $ 216000,,FALSE,FALSE
+9102,Departamento,Lavalle 910 P.A. Depto. 2,Azul,7300,Argentina,2520000,5,,,1,1,FALSE,FALSE,TRUE,,"Honorarios $100800 - $35000 facturados en agosto, $20800 en nov, $14520 en dic (10 hon y 4520 expensas)",,FALSE,FALSE
+9103,Duplex,Lavalle 910 PA Depto. 3,Azul,7300,Argentina,5160000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,Honorarios $103200 fact en marzo,,TRUE,FALSE
+9104,Duplex,Lavalle 910 PA Depto. 3,Azul,7300,Argentina,108900,5,,51,1,1,FALSE,FALSE,TRUE,Nueva,,,FALSE,FALSE
+9105,Departamento,Lavalle 910 P.A. Depto. 5,Azul,7300,Argentina,137400,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+9107,Duplex,Lavalle 910 P.A. Depto. 7,Azul,7300,Argentina,240000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,,,TRUE,FALSE
+9108,Departamento,Lavalle 910 P.A. Depto. 8,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+9141,Casa,Castellar 914,Azul,7300,Argentina,0,5,,,3,1,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+9208,Departamento,Lavalle 940 depto. 8,Azul,7300,Argentina,204000,5,54,,1,,FALSE,FALSE,TRUE,,Inquilina Georgina Inés Moretti 2281 30-6256 - PARTIDA 50314 - HONORARIOS $4080,,FALSE,FALSE
+9352,Departamento,Alberdi 935,Azul,7300,Argentina,0,5,,,1,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+9401,Departamento,Lavalle 940 Depto. 1,Azul,7300,Argentina,,5,54,,1,1,FALSE,FALSE,TRUE,,,,FALSE,FALSE
+9404,Departamento,Lavalle 940 Depto. 4,Azul,7300,Argentina,189000,5,,,1,1,FALSE,FALSE,TRUE,Nueva,,,FALSE,FALSE
+9465,Departamento,Sarmiento 946 depto. 5,Azul,7300,Argentina,3600000,5,,40,1,,FALSE,FALSE,FALSE,,Honorarios $72000,,FALSE,FALSE
+9486,Departamento,Sarmiento 948 depto. 6,Azul,7300,Argentina,5280000,5,,,1,,FALSE,FALSE,FALSE,,Honorarios $105600,,FALSE,FALSE
+9540,Departamento,25 de Mayo 954,Azul,7300,Argentina,6000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $240000 fact en nov,,FALSE,FALSE
+9541,Casa,Necochea 954,Azul,7300,Argentina,6000000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $240000 fact en octubre,,FALSE,FALSE
+9582,Casa,Leyria 536,Azul,7300,Argentina,14400000,5,,,2,1,FALSE,FALSE,TRUE,,Honorarios $576000,,FALSE,FALSE
+9641,Casa,Lamadrid 964,Azul,7300,Argentina,5400000,5,,,2,1,TRUE,FALSE,TRUE,,Honorarios $108000 fact en sept,,FALSE,FALSE
+9786,Casa,San Martín 227,Azul,7300,Argentina,0,5,663,543,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+9820,Departamento,"Barrio 18 de Abril Torre 9 Depto. 8º ""B""",Azul,7300,Argentina,3360000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $67200,,FALSE,FALSE
+9875,Local,Constitución 588,Azul,7300,Argentina,0,5,,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+10076,Departamento,De Paula 1013 Depto. E,Azul,7300,Argentina,114000,5,30,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+10078,Departamento,De Paula 1013 Depto. G,Azul,7300,Argentina,179400,5,25,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+10080,Departamento,De Paula 1013 Depto. B,Azul,7300,Argentina,96600,5,30,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+10350,Casa,Alberdi 1035,Azul,7300,Argentina,234600,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+10351,Departamento,Lavalle 885,Azul,7300,Argentina,90000,5,,,1,1,TRUE,FALSE,FALSE,,,,TRUE,FALSE
+10441,Duplex,Puán 1044 Depto. 1,Azul,7300,Argentina,145200,5,,,1,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+10442,Duplex,Puán 1044 Depto. 2,Azul,7300,Argentina,684000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $27360,,FALSE,FALSE
+10443,Departamento,Puan 1044 Depto. 3,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+10912,Departamento,25 de mayo 1091 depto. B,Azul,7300,Argentina,234000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+10993,Local,Colon 226,Azul,7300,Argentina,12000000,5,50,50,,1,FALSE,FALSE,FALSE,,"Honorarios 480000, $100000 fact en oct y $380000 en marzo",,FALSE,FALSE
+11184,Casa,Moreno 881 (Café),Azul,7300,Argentina,162000,5,100,96,3,1,TRUE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+11387,Local,Falucho 749,Azul,7300,Argentina,102000,5,300,96,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+11481,Departamento,Castellar 1148,Azul,7300,Argentina,0,5,70,50,1,1,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+11482,Departamento,España 1148 Depto. B,Azul,7300,Argentina,5400000,5,62,55,2,1,TRUE,FALSE,FALSE,,Honorarios $108000,,FALSE,FALSE
+11483,Departamento,España 1148 Depto. C,Azul,7300,Argentina,6000000,5,52,45,2,1,TRUE,FALSE,FALSE,2 ° Mano,Depósito a favor depto Necochea 475 F $218500 - Honorarios $180000 (3%) fact en enero,,FALSE,FALSE
+11484,Departamento,España 1148 Depto. D,Azul,7300,Argentina,4740000,5,45,,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $94800,,FALSE,FALSE
+11681,Departamento,Yrigoyen 1170 Depto. 1,Azul,7300,Argentina,4320000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $172800 fact en nov,,TRUE,FALSE
+11682,Departamento,Yrigoyen 1170 Depto. 2,Azul,7300,Argentina,2590000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $67680,,TRUE,FALSE
+11703,Departamento,Yrigoyen 1170 Depto. 3,Azul,7300,Argentina,7200000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $288000 fact en julio,,FALSE,FALSE
+12319,Local,Guido Spano 277,Azul,7300,Argentina,14400000,5,455,271,,,FALSE,FALSE,FALSE,,Honorarios $300000 (Se arregló el valor con Diego),,FALSE,FALSE
+12943,Local,Yrigoyen 770 Lavanderia,Azul,7300,Argentina,3600000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+13141,Departamento,Burgos 914,Azul,7300,Argentina,117600,5,40,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+13184,Departamento,Mitre 793,Azul,7300,Argentina,6420000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $128400,,FALSE,FALSE
+13285,Local,25 de Mayo 651,Azul,7300,Argentina,3600000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $144000 fact en julio,,FALSE,FALSE
+13303,Casa,España 484,Azul,7300,Argentina,14400000,5,195,117,2,2,TRUE,FALSE,TRUE,,Honorarios $576000 fact en dic,,FALSE,FALSE
+13866,Casa,Castellar 914,Azul,7300,Argentina,253200,5,214,107,3,1,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+14176,Local,Yrigoyen 621,Azul,7300,Argentina,270000,5,,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+14262,Casa,Neuquén 436,Azul,7300,Argentina,8640000,5,,,2,,TRUE,FALSE,TRUE,,Honorarios $172800,,FALSE,FALSE
+14501,Departamento,Rivadavia 145 Depto. E,Azul,7300,Argentina,0,5,,,2,2,TRUE,FALSE,FALSE,,,,FALSE,FALSE
+14867,Local,Av. Perón 823 (local),Azul,7300,Argentina,132000,5,,,,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+14941,Departamento,España 1494 depto. 3,Azul,7300,Argentina,1440000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $28800 fact en feb,,FALSE,FALSE
+14942,Departamento,"España 1494 Depto. ""A""",Azul,7300,Argentina,3000000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $60000,,FALSE,FALSE
+14943,Departamento,España 1494 Depto. D,Azul,7300,Argentina,6000000,5,,,1,1,FALSE,FALSE,FALSE,,No paga honorarios,,FALSE,FALSE
+15117,Local,Belgrano 539,Azul,7300,Argentina,25920000,5,388,388,,2,FALSE,FALSE,FALSE,,Partida Inmobiliaria 15117 / EL DEPOSITO SE ACTUALIZA CADA 6 MESES/ Honorarios $518400,,FALSE,FALSE
+15208,Local,Perón 900,Azul,7300,Argentina,2640000,5,,,2,1,FALSE,FALSE,TRUE,2 ° Mano,Depósito anterior $25600/Honorarios $183600,,FALSE,FALSE
+15237,Casa,Amado Diab 791,Azul,7300,Argentina,0,5,273,95,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+15567,Departamento,Abeberry 626 Depto. PA,Azul,7300,Argentina,0,5,40,3,,1,FALSE,FALSE,FALSE,Nueva,Para ceal es depto 3 y para Camuzzi Depto. 2,,FALSE,FALSE
+15588,Casa,Abeberry 625,Azul,7300,Argentina,12000000,5,433,80,,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $480000 fact en dic,,FALSE,FALSE
+15864,Galpón,Avda. Juan B. Justo 1336,Azul,7300,Argentina,165600,5,,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+15991,Local,Yrigoyen 462,Azul,7300,Argentina,2400000,5,,,,,FALSE,FALSE,FALSE,,No tiene depósito/ Honorarios $12360/Honorarios $21600/ Honorarios $72000/$141600,,FALSE,FALSE
+15997,Casa,Lavalle 672,Azul,7300,Argentina,0,5,194,183,3,1,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+16168,Casa,Belgrano 677,Azul,7300,Argentina,0,5,446,162,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+17897,Casa,Lavalle 468,Azul,7300,Argentina,7800000,5,174,131,2,2,TRUE,FALSE,TRUE,,Honorarios $156000 fact en abril,,FALSE,FALSE
+18462,Departamento,"Barrio 18 de Abril T. 6  2°P  ""A""",Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+18504,Local,25 de Mayo Norte 196,Azul,7300,Argentina,6600000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $132000,,FALSE,FALSE
+19001,Departamento,San Martín 190 Depto. 1,Azul,7300,Argentina,5520000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $110400,,FALSE,FALSE
+19239,Local,Colectora Ruta Nacional N° 3 N° 269,Azul,7300,Argentina,0,5,3421,1428,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+19628,Local,Moreno 1330,Azul,7300,Argentina,4800000,5,,,,,FALSE,FALSE,FALSE,,No tiene depósito / Honorarios $288000/Honorarios actual $386400,,FALSE,FALSE
+19733,Casa,Yrigoyen 1217,Azul,7300,Argentina,165600,5,234,142,2,1,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+20713,Casa,Belgrano 923,Azul,7300,Argentina,,5,260,103,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $500000 fact en feb,,TRUE,FALSE
+21014,Depósito,Mitre 138,Azul,7300,Argentina,4800000,5,,287,,1,FALSE,FALSE,FALSE,,Honorarios $96000 fact en agosto,,TRUE,FALSE
+21263,Casa,Bolívar 695,Azul,7300,Argentina,6720000,5,,,3,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $134400,,FALSE,FALSE
+21659,Casa,España 31,Azul,7300,Argentina,132480,5,346,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+22266,Casa,Corrientes 1690,Azul,7300,Argentina,0,5,,,2,1,FALSE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+22297,Local,Avda. Piazza 1479,Azul,7300,Argentina,14400000,5,399,73,,1,TRUE,FALSE,TRUE,2 ° Mano,"Honorarios $576000, $400000 fact en agosto y $176000 en sept",,TRUE,FALSE
+22299,Galpón,Misia Barranco 528,Azul,7300,Argentina,9600000,5,232,114,,1,TRUE,FALSE,FALSE,2 ° Mano,"Honorarios $384000, $192000 fact en abril",,FALSE,FALSE
+23161,Local,Bolívar 688,Azul,7300,Argentina,9120000,5,39,39,,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $364800,,FALSE,FALSE
+23204,Departamento,Lavalle 887,Azul,7300,Argentina,0,5,72,60,1,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+23873,Casa,San Luis 456,Azul,7300,Argentina,207000,5,77,64,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+27611,Casa,Salta 827,Azul,7300,Argentina,,5,300,124,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+27764,Local,25 de Mayo 897,Azul,7300,Argentina,3600000,5,,,,,FALSE,FALSE,FALSE,,NO TIENE DEPOSITO ANTERIOR/Honorarios $172800,,FALSE,FALSE
+29930,Local,Castellar 665,Azul,7300,Argentina,101400,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+30527,Departamento,Avenida Perón 878 UF Nº2,Azul,7300,Argentina,3600000,5,,,2,1,TRUE,FALSE,FALSE,,Honorarios $72000,,FALSE,FALSE
+30540,Departamento,San Martín N° 605 3° A,Azul,7300,Argentina,96600,5,,98,,,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+30955,Departamento,San Martin 393 7° A,Azul,7300,Argentina,1080000,5,98,,3,2,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32383,Casa,Rivas 681,Azul,7300,Argentina,6600000,5,140,67,3,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $132000,,FALSE,FALSE
+32411,Cochera,De Paula 324 Cochera 1,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32412,Cochera,De Paula 324 cochera 1,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32497,Local,Arenales 663,Azul,7300,Argentina,470940,5,30,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32498,Local,San Martin Nº 701,Azul,7300,Argentina,13700,5,40,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32499,Local,San Martin 703,Azul,7300,Argentina,1440000,5,35,35,,1,FALSE,FALSE,FALSE,,Honorarios $144000,,FALSE,FALSE
+32557,Galpón,Juan B. Justo Nº 1557,Azul,7300,Argentina,5040000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $100800,,FALSE,FALSE
+32564,Galpón,Juan B. Justo 1599,Azul,7300,Argentina,16800000,5,218,104,,1,FALSE,FALSE,FALSE,,Honorarios $ 672000; $336000 + iva fact en enero,,FALSE,FALSE
+32565,Galpón,Calle 62 N° 870,Azul,7300,Argentina,0,5,,165,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32580,Galpón,Juan B. Justo 1613,Azul,7300,Argentina,4800000,5,234,107,,,FALSE,FALSE,FALSE,,No cobrar agua porque no está conectada a la red / Honorarios $96000 fact en marzo,,FALSE,FALSE
+32655,Cochera,De Paula 324 Cochera 5,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+32947,Casa,Olavarria 610,Azul,7300,Argentina,510000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $10200,,FALSE,FALSE
+33123,Galpón,Misia Barranco 525,Azul,7300,Argentina,,5,405,405,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+33566,Galpón,Calle 62 N° 876,Azul,7300,Argentina,4440000,5,,,,,FALSE,FALSE,FALSE,,Depósito $7500,,FALSE,FALSE
+33567,Lote,Av. Juan B. Justo 1229,Azul,7300,Argentina,49260,5,260,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+33866,Local,Yrigoyen 461 - 459,Azul,7300,Argentina,14400000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $288000 fact en oct,,FALSE,FALSE
+35288,Casa,España 1779,Azul,7300,Argentina,0,5,480,110,3,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+35334,Casa,1º de Mayo 2275,Azul,7300,Argentina,15600000,5,300,128,2,1,TRUE,FALSE,TRUE,Nueva,"Honorarios $624000, $400000 fact en abril, $224000 en mayo",,TRUE,FALSE
+37188,Casa,Pellegrini 2238,Azul,7300,Argentina,127200,5,,,1,1,TRUE,TRUE,FALSE,,,,TRUE,FALSE
+37263,Casa,Argentina 396 esq. Nicaragua,Azul,7300,Argentina,94800,5,,,3,2,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,TRUE
+37363,Casa,Argentina 296,Azul,7300,Argentina,8280000,5,252,164,4,3,TRUE,FALSE,TRUE,2 ° Mano,Pda 37363 / Honorarios $331200 fact en abril,,FALSE,FALSE
+38059,Casa,Salta 387,Azul,7300,Argentina,16800000,5,154,120,2,1,TRUE,FALSE,TRUE,,Honorarios $ 672000,,FALSE,FALSE
+38303,Casa,Malere 787,Azul,7300,Argentina,7800000,5,165,87,2,1,TRUE,FALSE,TRUE,2 ° Mano,Honorarios $115200/ $156000,,TRUE,FALSE
+38312,Departamento,Roca 355 1P-A,Azul,7300,Argentina,12000000,5,73,65,2,1,FALSE,FALSE,FALSE,,"Honorarios $480000, $200000 fact en marzo, $140000 en abril",,FALSE,FALSE
+39321,Departamento,San Martin 393 Piso 2 Depto C,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+40427,Local,Mitre 411,Azul,7300,Argentina,1200000,5,45,,,1,FALSE,FALSE,FALSE,,Honorarios $96000 fact en oct,,FALSE,FALSE
+41996,Casa,Fournier 468,Azul,7300,Argentina,9000000,5,233,90,2,1,TRUE,FALSE,FALSE,2 ° Mano,Depósito inicial $9000/Honorarios $180000 fact en oct,,FALSE,FALSE
+42010,Departamento,San Martín 894,Azul,7300,Argentina,5400000,5,,,,,FALSE,FALSE,FALSE,,Pda 42010 - Honorarios $108000 fact en dic,,FALSE,FALSE
+43633,Local,Avenida 25 de Mayo 679,Azul,7300,Argentina,6840000,5,131,,,,FALSE,FALSE,FALSE,,NO SE COBRA HONORARIOS,,FALSE,FALSE
+43640,Departamento,Corrientes 433 PA,Azul,7300,Argentina,110400,5,121,105,2,1,TRUE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+44044,Local,Mitre 849,Azul,7300,Argentina,14400000,5,,,,1,FALSE,FALSE,FALSE,,Honorarios $576000,,FALSE,FALSE
+44811,Departamento,Arenales 448 1° A,Azul,7300,Argentina,4980000,5,22,,1,1,FALSE,FALSE,FALSE,,Honorarios $99600,,FALSE,FALSE
+44816,Local,Mitre 836,Azul,7300,Argentina,1200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $84000/ Depósito anterior $7840,,FALSE,FALSE
+44823,Departamento,Arenales 448 1º C,Azul,7300,Argentina,4800000,5,35,,1,1,FALSE,FALSE,FALSE,,Honorarios $96000,,FALSE,FALSE
+44824,Departamento,Arenales 448 2º B,Azul,7300,Argentina,4800000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $96000 fact en marzo,,FALSE,FALSE
+45404,Departamento,"Barrio 18 de Abril T. 3 PB ""D""",Azul,7300,Argentina,226200,5,,,2,1,FALSE,FALSE,FALSE,,junio-julio-agosto (2020) $9650,,TRUE,FALSE
+45672,Casa,Miñana 538,Azul,7300,Argentina,0,5,90,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,TRUE,FALSE
+45681,Departamento,25 de Mayo 527 4º piso,Azul,7300,Argentina,7920000,5,21,21,1,1,FALSE,FALSE,FALSE,,"Honorarios $316800, $100000 fact en feb",,FALSE,FALSE
+45961,Local,Moreno 691,Azul,7300,Argentina,2400000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $120000,,FALSE,FALSE
+46012,Departamento,Belgrano 460 12º A,Azul,7300,Argentina,432000,5,4,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+46335,Casa,Avenida 25 de Mayo 0087,Azul,7300,Argentina,18000000,5,,,2,2,TRUE,FALSE,TRUE,,Honorarios $720000,,FALSE,FALSE
+46644,Departamento,De Paula 1057,Azul,7300,Argentina,1008000,5,120,,2,1,TRUE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+46696,Departamento,Arenales 768 P.B.,Azul,7300,Argentina,4800000,5,73,48,1,1,TRUE,FALSE,FALSE,2 ° Mano,Honorarios $192000 fact en agosto,,FALSE,FALSE
+46698,Local,Yrigoyen 495,Azul,7300,Argentina,3600000,5,,,,,FALSE,FALSE,FALSE,,No tiene depósito / Honorarios $127200,,FALSE,FALSE
+46765,Local,Arenales 797,Azul,7300,Argentina,69000,0,18,15,,1,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+47011,Departamento,Guido Spano 470 Depto 1,Azul,7300,Argentina,5160000,5,,,1,1,TRUE,FALSE,FALSE,,"Honorarios $103200
+
+Dar recibo de mayo",,FALSE,FALSE
+47310,Departamento,1º de Mayo 473 Depto. 10,Azul,7300,Argentina,,5,34,34,1,1,FALSE,FALSE,FALSE,Nueva,,,FALSE,FALSE
+47380,Local,Yrigoyen 632,Azul,7300,Argentina,2760000,5,,,,,FALSE,FALSE,FALSE,,No tiene depósito / Honorarios $96000/ $127200,,FALSE,FALSE
+47381,Local,Yrigoyen 630,Azul,7300,Argentina,7200000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $432000 fact en abril,,FALSE,FALSE
+47571,Cochera,Puan 280 Cochera 14,Azul,7300,Argentina,0,5,11,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+47575,Departamento,Necochea 475 Depto. B,Azul,7300,Argentina,3360000,5,40,,1,1,TRUE,FALSE,FALSE,,No pagó honorarios en el primer contrato/ Honorarios $67200 fact en sept,,FALSE,FALSE
+47879,Departamento,Republica Dominicana 7 (259) Depto. B,Azul,7300,Argentina,6720000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $268800 fact en marzo,,FALSE,FALSE
+48461,Departamento,Moreno 596 5° C,Azul,7300,Argentina,2160000,5,,,1,1,FALSE,FALSE,FALSE,,Honorarios $86400 facturados en junio,,FALSE,FALSE
+48581,Departamento,25 de Mayo 346,Azul,7300,Argentina,5760000,5,60,60,2,1,FALSE,FALSE,FALSE,,Honorarios $72000/$115200,,FALSE,FALSE
+48788,Local,Juan B. Justo 1242 Local 2,Azul,7300,Argentina,3600000,5,60,40,,1,FALSE,FALSE,FALSE,,Honorarios $72000 (2%) fact en enero,,FALSE,FALSE
+48926,Departamento,Olavarria 617 Depto. 6,Azul,7300,Argentina,0,5,48,48,1,2,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+49122,Departamento,Prat 25 depto. A,Azul,7300,Argentina,213600,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+49608,Local,Amado Diab 373 Local 2,Azul,7300,Argentina,1620000,5,,42,,1,FALSE,FALSE,FALSE,,Honorarios $64800 fact en oct,,FALSE,FALSE
+50153,Departamento,Chaves 50 1° piso depto. 53,Azul,7300,Argentina,5040000,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $201600 fact en feb,,TRUE,FALSE
+50192,Departamento,Sarmiento 940 depto. 4,Azul,7300,Argentina,3900000,5,40,,1,1,FALSE,FALSE,FALSE,,Honorarios $78000 fact en marzo,,FALSE,FALSE
+50624,Departamento,1º de Mayo 473 Depto. 4,Azul,7300,Argentina,4800000,5,,,1,,FALSE,FALSE,FALSE,,Honorarios $100000 fact en oct,,FALSE,FALSE
+54110,Departamento,"25 de Mayo 541 1° ""A""",Azul,7300,Argentina,3540000,5,,,,,FALSE,FALSE,FALSE,,Honorarios $70800 fact en dic,,FALSE,FALSE
+54111,Departamento,"Barrio 18 de Abril Torre 5  Depto.  4 ""A""",Azul,7300,Argentina,129720,5,,,2,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+54112,Departamento,"25 de Mayo 541 1° Piso Depto. ""B""",Azul,7300,Argentina,9120000,5,38,,,1,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $ 364800,,FALSE,FALSE
+56523,Departamento,San Martin 565 2° C,Azul,7300,Argentina,0,5,50,,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+56553,Departamento,San Martín 565 5° C,Azul,7300,Argentina,2400000,5,45,,1,1,FALSE,FALSE,FALSE,,No paga honorarios,,FALSE,FALSE
+56582,Departamento,San Martin 565 8° B (Edfi. Penoucos),Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+56594,Departamento,San Martín 565 9° D,Azul,7300,Argentina,4320000,5,,,1,1,FALSE,FALSE,FALSE,,No paga honorarios,,FALSE,FALSE
+61326,Local,Moreno 613 (Local 26),Azul,7300,Argentina,9120000,5,,,,,FALSE,FALSE,FALSE,,"Honorarios $364800, $100000 fact en mayo, $120000 en sept, $104800 fact en oct",,FALSE,FALSE
+67910,Departamento,Burgos 679 10° A,Azul,7300,Argentina,3600000,5,,63,2,1,FALSE,FALSE,FALSE,,"Honorarios $144000 - $50000 fact en oct, $50000 en nov.,$44000 en enero",,FALSE,FALSE
+70123,Departamento,San Martin 701,Azul,7300,Argentina,162000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+73402,Cochera,Castellar 734 Cochera 2,Azul,7300,Argentina,4000,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,,,FALSE,FALSE
+73403,Cochera,Castellar 734 Cochera 3,Azul,7300,Argentina,,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+76434,Local,Prat 520 Local 4,Azul,7300,Argentina,146400,5,,,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+82700,Casa,Sarmiento 820,Azul,7300,Argentina,0,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+91005,Duplex,Lavalle 910 P. A. Depto. 5,Azul,7300,Argentina,0,5,,,1,1,FALSE,FALSE,TRUE,2 ° Mano,,,FALSE,FALSE
+91044,Departamento,Lavalle 910 P. A. Depto. 4,Azul,7300,Argentina,0,5,,51,1,1,FALSE,FALSE,TRUE,,,,FALSE,FALSE
+94011,Departamento,Lavalle 940 Depto. 11,Azul,7300,Argentina,3600000,5,,,1,1,FALSE,FALSE,FALSE,Nueva,Honorarios $144000 fact en julio,,FALSE,FALSE
+94012,Departamento,Lavalle 940 Depto. 12,Azul,7300,Argentina,11520000,5,,,,,FALSE,FALSE,FALSE,2 ° Mano,Honorarios $460000 fact en abril,,FALSE,FALSE
+94015,Departamento,Lavalle 940 depto. 15,Azul,7300,Argentina,165600,5,54,54,1,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+114811,Departamento,"España 1148 Depto. ""A""",Azul,7300,Argentina,5760000,5,,,2,1,FALSE,FALSE,FALSE,,Honorarios $115200,,FALSE,FALSE
+141381,Departamento,"San Martín 319 1° ""A""",Azul,7300,Argentina,14400000,5,130,120,3,2,TRUE,FALSE,FALSE,Nueva,Honorarios $576000,,FALSE,FALSE
+141382,Departamento,"San Martín 319 1° ""B""",Azul,7300,Argentina,11040000,5,,,,,FALSE,FALSE,FALSE,, Honorarios $441600 fact en marzo/ Depósito del frigorifico $180000,,FALSE,FALSE
+146831,Departamento,"Rivadavia 145 Depto. ""A""",Azul,7300,Argentina,,5,,,2,2,TRUE,FALSE,TRUE,,,,FALSE,FALSE
+311311,Departamento,Avda. Mitre 311 depto. B,Azul,7300,Argentina,114600,5,,,1,1,FALSE,FALSE,FALSE,2 ° Mano,,,TRUE,FALSE
+325642,Galpón,Av. Juan B. Justo 1593,Azul,7300,Argentina,175500,5,109,58,,1,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+466961,Departamento,Arenales 768 Planta alta,Azul,7300,Argentina,9120000,5,,70,2,1,FALSE,FALSE,FALSE,,Honorarios $364800 fact en oct,,FALSE,FALSE
+734002,Cochera,Castellar 734 Cochera 2,Azul,7300,Argentina,4000,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
+8207913,Local,San Martín 913,Azul,7300,Argentina,60000,5,,,,1,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+8207915,Casa,San Martín N° 915,Azul,7300,Argentina,107640,5,,,2,2,TRUE,FALSE,FALSE,2 ° Mano,Ampliacion Deposito 1020,,TRUE,FALSE
+8207917,Local,San Martín 917,Azul,7300,Argentina,0,5,,,,1,FALSE,FALSE,FALSE,,,,TRUE,FALSE
+29979909,Local,Avda. Mitre 880,Azul,7300,Argentina,53280,5,,,,,FALSE,FALSE,FALSE,,,,FALSE,FALSE
