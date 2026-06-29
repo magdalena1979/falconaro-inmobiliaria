@@ -21,8 +21,14 @@ export async function countRows(table: TableSchema): Promise<number> {
 
 export async function createRow(table: TableSchema, row: TableRow): Promise<void> {
   const payload = cleanPayload(row, table.columns)
-  const { error } = await supabase.from(table.name).insert(payload)
+  const query = supabase.from(table.name).insert(payload)
+  const { data, error } = table.primaryKey
+    ? await query.select(table.primaryKey).single()
+    : await query
   if (error) throw formatSupabaseError(error, table.name, 'crear')
+  if (table.name === 'propiedades' && table.primaryKey && data) {
+    await syncPropertyOwners(String((data as unknown as TableRow)[table.primaryKey]), row)
+  }
 }
 
 export async function updateRow(table: TableSchema, row: TableRow): Promise<void> {
@@ -33,6 +39,9 @@ export async function updateRow(table: TableSchema, row: TableRow): Promise<void
     .update(cleanPayload(row, table.columns, table.primaryKey))
     .eq(table.primaryKey, id as string | number | boolean)
   if (error) throw formatSupabaseError(error, table.name, 'actualizar')
+  if (table.name === 'propiedades') {
+    await syncPropertyOwners(String(id), row)
+  }
 }
 
 export async function deleteRow(table: TableSchema, row: TableRow): Promise<void> {
@@ -61,6 +70,40 @@ function cleanPayload(row: TableRow, columns: ColumnSchema[], primaryKey?: strin
   }
 
   return payload
+}
+
+async function syncPropertyOwners(propertyId: string, row: TableRow): Promise<void> {
+  if (!('titulares_ids' in row)) return
+  const ownerIds = arrayValue(row.titulares_ids)
+
+  const { error: deleteError } = await supabase
+    .from('propiedad_propietarios')
+    .delete()
+    .eq('propiedad_id', propertyId)
+  if (deleteError) throw formatSupabaseError(deleteError, 'propiedad_propietarios', 'actualizar')
+  if (!ownerIds.length) return
+
+  const { error: insertError } = await supabase.from('propiedad_propietarios').insert(
+    ownerIds.map((ownerId, index) => ({
+      propiedad_id: propertyId,
+      propietario_id: ownerId,
+      principal: index === 0,
+    })),
+  )
+  if (insertError) throw formatSupabaseError(insertError, 'propiedad_propietarios', 'actualizar')
+}
+
+function arrayValue(value: TableRow[string] | undefined): string[] {
+  if (Array.isArray(value)) return value.map(String).filter(Boolean)
+  if (typeof value === 'string' && value.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(value)
+      return Array.isArray(parsed) ? parsed.map(String).filter(Boolean) : []
+    } catch {
+      return []
+    }
+  }
+  return value ? [String(value)] : []
 }
 
 function formatSupabaseError(

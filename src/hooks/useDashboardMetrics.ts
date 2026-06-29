@@ -35,21 +35,23 @@ export function useDashboardMetrics(modules: ModuleDefinition[]) {
 async function buildDashboard(modules: ModuleDefinition[]): Promise<DashboardData> {
   const propertyTable = findTable(modules, 'properties')
   const contractTable = findTable(modules, 'contracts')
-  const paymentTable = findTable(modules, 'payments')
+  const installmentTable = findTable(modules, 'rentInstallments')
+  const movementTable = findTable(modules, 'cashMovements')
   const agendaTable = findTable(modules, 'agenda')
   const iclTable = findTable(modules, 'iclIndices')
 
-  const [properties, contracts, payments, agenda, iclIndices] = await Promise.all([
+  const [properties, contracts, installments, movements, agenda, iclIndices] = await Promise.all([
     listTableRows(propertyTable),
     listTableRows(contractTable),
-    listTableRows(paymentTable),
+    listTableRows(installmentTable),
+    listTableRows(movementTable),
     listTableRows(agendaTable),
     listTableRows(iclTable),
   ])
 
   const activeRentals = metricStatus(contractTable, contracts, 'Alquileres activos', ['activo', 'vigente', 'active'])
   const expiringContracts = metricContractsExpiringSoon(contractTable, contracts)
-  const pendingPayments = metricStatus(paymentTable, payments, 'Ingresos pendientes', [
+  const pendingPayments = metricStatus(installmentTable, installments, 'Cobros pendientes', [
     'pendiente',
     'pending',
     'adeudado',
@@ -62,8 +64,8 @@ async function buildDashboard(modules: ModuleDefinition[]): Promise<DashboardDat
     metrics: [activeRentals, expiringContracts, pendingPayments, availableProperties, alerts],
     propertyAvailability: seriesPropertyAvailability(propertyTable, properties),
     contractStatus: seriesByStatus(contractTable, contracts, 'Estado de contratos'),
-    paymentTimeline: seriesPaymentTimeline(paymentTable, payments),
-    annualPaymentTimeline: seriesAnnualPaymentTimeline(paymentTable, payments),
+    paymentTimeline: seriesPaymentTimeline(movementTable, movements),
+    annualPaymentTimeline: seriesAnnualPaymentTimeline(movementTable, movements),
     alertUrgency: seriesAlertUrgency(agendaTable, agenda),
     rentalAdjustmentIndex: seriesRentalAdjustmentIndex(iclTable, iclIndices),
   }
@@ -205,11 +207,11 @@ function seriesPaymentTimeline(table: TableSchema | undefined, rows: TableRow[])
     'alquiler_locador',
     'resto_alquiler',
   ])
-  const dateColumn = findColumn(table, ['fecha_pago', 'fecha_vencimiento', 'fecha_cobro'])
+  const dateColumn = findColumn(table, ['fecha', 'fecha_pago', 'fecha_vencimiento', 'fecha_cobro'])
   const monthBuckets = lastMonthBuckets(6)
   const bucketValues = new Map(monthBuckets.map((bucket) => [bucket.key, 0]))
 
-  for (const row of rows) {
+  for (const row of filterIncomeRows(rows)) {
     const key = getPaymentMonthKey(row, dateColumn)
     if (!key || !bucketValues.has(key)) continue
     bucketValues.set(key, (bucketValues.get(key) ?? 0) + toNumber(amountColumn ? row[amountColumn] : null))
@@ -233,11 +235,11 @@ function seriesAnnualPaymentTimeline(table: TableSchema | undefined, rows: Table
     'alquiler_locador',
     'resto_alquiler',
   ])
-  const dateColumn = findColumn(table, ['fecha_pago', 'fecha_vencimiento', 'fecha_cobro'])
+  const dateColumn = findColumn(table, ['fecha', 'fecha_pago', 'fecha_vencimiento', 'fecha_cobro'])
   const monthBuckets = currentYearBuckets()
   const bucketValues = new Map(monthBuckets.map((bucket) => [bucket.key, 0]))
 
-  for (const row of rows) {
+  for (const row of filterIncomeRows(rows)) {
     const key = getPaymentMonthKey(row, dateColumn)
     if (!key || !bucketValues.has(key)) continue
     bucketValues.set(key, (bucketValues.get(key) ?? 0) + toNumber(amountColumn ? row[amountColumn] : null))
@@ -311,6 +313,10 @@ function filterOpenRows(table: TableSchema, rows: TableRow[]): TableRow[] {
   const statusColumn = findColumn(table, ['estado', 'status'])
   if (!statusColumn) return rows
   return rows.filter((row) => !isStatusMatch(row[statusColumn], ['resuelto', 'cerrado', 'finalizado', 'cancelado']))
+}
+
+function filterIncomeRows(rows: TableRow[]): TableRow[] {
+  return rows.filter((row) => row.tipo === undefined || row.tipo === 'ingreso')
 }
 
 function groupCount(rows: TableRow[], getLabel: (row: TableRow) => string): Array<[string, number]> {

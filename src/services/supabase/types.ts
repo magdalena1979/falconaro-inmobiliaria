@@ -31,6 +31,7 @@ export interface TableSchema {
   columns: ColumnSchema[]
   primaryKey?: string
   canCreate?: boolean
+  canUpdate?: boolean
   canDelete?: boolean
 }
 
@@ -65,6 +66,14 @@ export type ModuleKey =
   | 'payments'
   | 'expenses'
   | 'ownerCollections'
+  | 'propertyOwners'
+  | 'contractOwners'
+  | 'contractTenants'
+  | 'contractGuarantors'
+  | 'rentInstallments'
+  | 'cashMovements'
+  | 'ownerSettlements'
+  | 'settlementDetails'
   | 'agenda'
   | 'reports'
   | 'employees'
@@ -75,4 +84,5 @@ export type ModuleKey =
   | 'currencies'
   | 'updateTypes'
   | 'agencySettings'
+  | 'financialSettings'
   | 'iclIndices'

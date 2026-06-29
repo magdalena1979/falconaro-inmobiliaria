@@ -233,7 +233,9 @@ async function insertProperty(property: PropertyInput, ownerIds: string[]): Prom
     .select('id')
     .single()
   if (error) throw error
-  return data as { id: string }
+  const inserted = data as { id: string }
+  await insertPropertyOwners(inserted.id, ownerIds)
+  return inserted
 }
 
 async function insertTenant(
@@ -356,7 +358,82 @@ async function insertContract(
     .select('id')
     .single()
   if (error) throw error
-  return data as { id: string }
+  const inserted = data as { id: string }
+  await insertContractRelations(inserted.id, ownerIds, [tenantId])
+  await insertInstallments(inserted.id, input.contract.fechaInicio, input.contract.fechaFin, input.contract.plazoMeses, input.contract.canonMensual)
+  return inserted
+}
+
+async function insertPropertyOwners(propertyId: string, ownerIds: string[]) {
+  if (!ownerIds.length) return
+  const { error } = await supabase.from('propiedad_propietarios').insert(
+    ownerIds.map((ownerId, index) => ({
+      propiedad_id: propertyId,
+      propietario_id: ownerId,
+      principal: index === 0,
+    })),
+  )
+  if (error) throw error
+}
+
+async function insertContractRelations(contractId: string, ownerIds: string[], tenantIds: string[]) {
+  if (ownerIds.length) {
+    const { error } = await supabase.from('contrato_propietarios').insert(
+      ownerIds.map((ownerId, index) => ({
+        contrato_id: contractId,
+        propietario_id: ownerId,
+        principal: index === 0,
+      })),
+    )
+    if (error) throw error
+  }
+
+  if (tenantIds.length) {
+    const { error } = await supabase.from('contrato_inquilinos').insert(
+      tenantIds.map((tenantId, index) => ({
+        contrato_id: contractId,
+        inquilino_id: tenantId,
+        principal: index === 0,
+      })),
+    )
+    if (error) throw error
+  }
+}
+
+async function insertInstallments(
+  contractId: string,
+  startValue: string,
+  endValue: string,
+  monthsValue: string,
+  amountValue: string,
+) {
+  const start = new Date(`${startValue}T12:00:00`)
+  if (!Number.isFinite(start.getTime())) return
+
+  const months = numberOrNull(monthsValue) ?? monthsBetweenDates(startValue, endValue) ?? 1
+  const amount = numberOrNull(amountValue) ?? 0
+  const rows = Array.from({ length: Math.max(1, months) }, (_, index) => {
+    const periodStart = addMonths(start, index)
+    const nextPeriod = addMonths(start, index + 1)
+    const periodEnd = new Date(nextPeriod)
+    periodEnd.setDate(periodEnd.getDate() - 1)
+    const dueDate = new Date(periodStart)
+    dueDate.setDate(Math.min(10, lastDayOfMonth(dueDate)))
+
+    return {
+      contrato_id: contractId,
+      numero_cuota: index + 1,
+      periodo_inicio: formatDate(periodStart),
+      periodo_fin: formatDate(periodEnd),
+      fecha_vencimiento: formatDate(dueDate),
+      importe: amount,
+      saldo: amount,
+      estado: dueDate < startOfToday() ? 'vencida' : 'pendiente',
+    }
+  })
+
+  const { error } = await supabase.from('cuotas_alquiler').insert(rows)
+  if (error) throw error
 }
 
 async function uploadPropertyPhotos(
@@ -416,4 +493,33 @@ function numberOrNull(value: string): number | null {
   if (!value.trim()) return null
   const parsed = Number(value.replace(/\./g, '').replace(',', '.').replace(/[^\d.-]/g, ''))
   return Number.isFinite(parsed) ? parsed : null
+}
+
+function monthsBetweenDates(startValue: string, endValue: string): number | undefined {
+  const start = new Date(`${startValue}T12:00:00`)
+  const end = new Date(`${endValue}T12:00:00`)
+  if (!Number.isFinite(start.getTime()) || !Number.isFinite(end.getTime()) || end <= start) return undefined
+  return Math.max(1, (end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth())
+}
+
+function addMonths(date: Date, months: number): Date {
+  const next = new Date(date)
+  const originalDay = next.getDate()
+  next.setDate(1)
+  next.setMonth(next.getMonth() + months)
+  next.setDate(Math.min(originalDay, lastDayOfMonth(next)))
+  return next
+}
+
+function lastDayOfMonth(date: Date): number {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+}
+
+function startOfToday(): Date {
+  const today = new Date()
+  return new Date(today.getFullYear(), today.getMonth(), today.getDate())
+}
+
+function formatDate(date: Date): string {
+  return date.toISOString().slice(0, 10)
 }

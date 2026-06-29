@@ -55,9 +55,11 @@ export function EntityPage({ module, renderRowActions }: EntityPageProps) {
       renderCell: (params) => (
         <Stack direction="row" spacing={1}>
           {renderRowActions?.(params.row)}
-          <Button size="small" onClick={() => openEdit(params.row)}>
-            Editar
-          </Button>
+          {activeTable.canUpdate !== false && (
+            <Button size="small" onClick={() => openEdit(params.row)}>
+              Editar
+            </Button>
+          )}
           {activeTable.canDelete !== false && (
             <Button color="error" size="small" onClick={() => removeRow(params.row)}>
               Borrar

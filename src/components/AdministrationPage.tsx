@@ -5,11 +5,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useMemo, useState } from 'react'
 import { useTableRows } from '../hooks/useTableRows'
 import { downloadReceiptDocx, type ReceiptDocumentData } from '../services/contracts/receiptDocument'
-import { createRow } from '../services/supabase/tableService'
+import { registerExpense as registerExpenseMovement, registerIncome as registerIncomePayment } from '../services/financeService'
 import type { ModuleDefinition, TableRow } from '../services/supabase/types'
 
 interface AdministrationPageProps {
   incomeModule: ModuleDefinition
+  movementsModule: ModuleDefinition
+  installmentsModule: ModuleDefinition
   contractsModule: ModuleDefinition
   tenantsModule: ModuleDefinition
   propertiesModule: ModuleDefinition
@@ -18,6 +20,7 @@ interface AdministrationPageProps {
 
 interface MovementForm {
   contractId: string
+  installmentId: string
   date: string
   amount: string
   concept: string
@@ -27,6 +30,7 @@ interface MovementForm {
 
 const emptyForm: MovementForm = {
   contractId: '',
+  installmentId: '',
   date: new Date().toISOString().slice(0, 10),
   amount: '',
   concept: '',
@@ -35,7 +39,8 @@ const emptyForm: MovementForm = {
 }
 
 export function AdministrationPage({
-  incomeModule,
+  movementsModule,
+  installmentsModule,
   contractsModule,
   tenantsModule,
   propertiesModule,
@@ -45,7 +50,8 @@ export function AdministrationPage({
   const [incomeForm, setIncomeForm] = useState(emptyForm)
   const [expenseForm, setExpenseForm] = useState(emptyForm)
   const [message, setMessage] = useState('')
-  const rowsQuery = useTableRows(incomeModule.table)
+  const rowsQuery = useTableRows(movementsModule.table)
+  const installmentsQuery = useTableRows(installmentsModule.table)
   const contractsQuery = useTableRows(contractsModule.table)
   const tenantsQuery = useTableRows(tenantsModule.table)
   const propertiesQuery = useTableRows(propertiesModule.table)
@@ -53,14 +59,22 @@ export function AdministrationPage({
   const queryClient = useQueryClient()
   const settings = settingsQuery.data?.[0]
   const rows = useMemo(() => rowsQuery.data ?? [], [rowsQuery.data])
+  const installments = useMemo(() => installmentsQuery.data ?? [], [installmentsQuery.data])
   const contracts = useMemo(() => contractsQuery.data ?? [], [contractsQuery.data])
   const tenants = useMemo(() => tenantsQuery.data ?? [], [tenantsQuery.data])
   const properties = useMemo(() => propertiesQuery.data ?? [], [propertiesQuery.data])
   const movements = useMemo(() => buildMovements(rows), [rows])
-  const mutation = useMutation({
-    mutationFn: (row: TableRow) => createRow(incomeModule.table, row),
+  const incomeMutation = useMutation({
+    mutationFn: registerIncomePayment,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['table-rows', incomeModule.table.name] })
+      await queryClient.invalidateQueries({ queryKey: ['table-rows'] })
+      await queryClient.invalidateQueries({ queryKey: ['dashboard-metrics'] })
+    },
+  })
+  const expenseMutation = useMutation({
+    mutationFn: registerExpenseMovement,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['table-rows'] })
       await queryClient.invalidateQueries({ queryKey: ['dashboard-metrics'] })
     },
   })
@@ -84,7 +98,9 @@ export function AdministrationPage({
       </Tabs>
 
       {message && <Alert severity="success" onClose={() => setMessage('')}>{message}</Alert>}
-      {mutation.error && <Alert severity="error">{mutation.error.message}</Alert>}
+      {(incomeMutation.error || expenseMutation.error) && (
+        <Alert severity="error">{incomeMutation.error?.message ?? expenseMutation.error?.message}</Alert>
+      )}
 
       {tab === 0 ? (
         <AccountSummary isLoading={rowsQuery.isLoading} isError={rowsQuery.isError} rows={movements} />
@@ -93,11 +109,13 @@ export function AdministrationPage({
           form={incomeForm}
           kind="ingreso"
           contracts={contracts}
-          isPending={mutation.isPending}
+          installments={installments}
+          isPending={incomeMutation.isPending}
           onChange={setIncomeForm}
           onContractChange={(contractId) => setIncomeForm((current) => ({
             ...current,
             contractId,
+            installmentId: firstPendingInstallmentId(contractId, installments),
             payerName: tenantNameForContract(contractId, contracts, tenants),
           }))}
           onSubmit={registerIncome}
@@ -107,9 +125,10 @@ export function AdministrationPage({
           form={expenseForm}
           kind="egreso"
           contracts={contracts}
-          isPending={mutation.isPending}
+          installments={installments}
+          isPending={expenseMutation.isPending}
           onChange={setExpenseForm}
-          onContractChange={(contractId) => setExpenseForm((current) => ({ ...current, contractId }))}
+          onContractChange={(contractId) => setExpenseForm((current) => ({ ...current, contractId, installmentId: '' }))}
           onSubmit={registerExpense}
         />
       )}
@@ -126,22 +145,19 @@ export function AdministrationPage({
     const receiptNumber = createReceiptNumber()
     const receipt = receiptData(incomeForm, receiptNumber, amount)
 
-    await mutation.mutateAsync({
-      contrato_id: incomeForm.contractId,
-      fecha_pago: `${incomeForm.date}T12:00:00`,
-      concepto: incomeForm.concept,
-      importe: amount,
-      tipo_movimiento: 'ingreso',
-      porcentaje_comision: percentage,
-      importe_comision: commission,
-      saldo_propietario: ownerBalance,
-      liquidacion_propietario: ownerBalance,
-      pagador_nombre: incomeForm.payerName,
-      medio_pago: incomeForm.paymentMethod,
-      numero_recibo: receiptNumber,
-      recibo: receiptNumber,
-      recibo_datos: receipt as unknown as TableRow[string],
-      estado: 'cobrado',
+    await incomeMutation.mutateAsync({
+      contractId: incomeForm.contractId,
+      installmentId: incomeForm.installmentId || undefined,
+      date: incomeForm.date,
+      amount,
+      concept: incomeForm.concept,
+      payerName: incomeForm.payerName,
+      paymentMethod: incomeForm.paymentMethod,
+      receiptNumber,
+      receiptData: receipt as unknown as TableRow[string],
+      commissionPercentage: percentage,
+      commissionAmount: commission,
+      ownerBalance,
     })
     await downloadReceiptDocx(receipt)
     setIncomeForm(emptyForm)
@@ -151,14 +167,12 @@ export function AdministrationPage({
   async function registerExpense() {
     const amount = parseAmount(expenseForm.amount)
     if (!amount || !expenseForm.concept) return
-    await mutation.mutateAsync({
-      contrato_id: expenseForm.contractId || null,
-      fecha_pago: `${expenseForm.date}T12:00:00`,
-      concepto: expenseForm.concept,
-      importe: amount,
-      tipo_movimiento: 'egreso',
-      medio_pago: expenseForm.paymentMethod,
-      estado: 'pagado',
+    await expenseMutation.mutateAsync({
+      contractId: expenseForm.contractId || undefined,
+      date: expenseForm.date,
+      amount,
+      concept: expenseForm.concept,
+      paymentMethod: expenseForm.paymentMethod,
     })
     setExpenseForm(emptyForm)
     setMessage('Egreso registrado correctamente.')
@@ -188,6 +202,7 @@ function MovementPanel({
   form,
   kind,
   contracts,
+  installments,
   isPending,
   onChange,
   onContractChange,
@@ -196,6 +211,7 @@ function MovementPanel({
   form: MovementForm
   kind: 'ingreso' | 'egreso'
   contracts: TableRow[]
+  installments: TableRow[]
   isPending: boolean
   onChange: (form: MovementForm) => void
   onContractChange: (contractId: string) => void
@@ -203,6 +219,10 @@ function MovementPanel({
 }) {
   const isIncome = kind === 'ingreso'
   const isValid = Boolean(form.date && form.amount && form.concept && (!isIncome || (form.contractId && form.payerName)))
+  const contractInstallments = installments
+    .filter((installment) => String(installment.contrato_id) === form.contractId)
+    .filter((installment) => !['pagada', 'anulada'].includes(String(installment.estado ?? '')))
+    .sort((left, right) => Number(left.numero_cuota ?? 0) - Number(right.numero_cuota ?? 0))
 
   return (
     <Paper className="contract-form-panel" variant="outlined">
@@ -235,6 +255,22 @@ function MovementPanel({
             value={form.date}
             onChange={(event) => onChange({ ...form, date: event.target.value })}
           />
+          {isIncome && (
+            <TextField
+              disabled={!form.contractId}
+              label="Cuota a imputar"
+              select
+              value={form.installmentId}
+              onChange={(event) => onChange({ ...form, installmentId: event.target.value })}
+            >
+              <MenuItem value="">Sin imputar</MenuItem>
+              {contractInstallments.map((installment) => (
+                <MenuItem key={String(installment.id)} value={String(installment.id)}>
+                  {installmentLabel(installment)}
+                </MenuItem>
+              ))}
+            </TextField>
+          )}
           <TextField
             label="Importe"
             type="number"
@@ -320,7 +356,7 @@ function buildMovements(rows: TableRow[]): MovementRow[] {
     .sort((a, b) => movementDate(a).localeCompare(movementDate(b)))
     .map((row, index) => {
       const amount = firstNumber(row, ['importe', 'total_recibo_locatario', 'cuota_mensual'])
-      const isExpense = row.tipo_movimiento === 'egreso'
+      const isExpense = (row.tipo ?? row.tipo_movimiento) === 'egreso'
       const income = isExpense ? 0 : amount
       const expense = isExpense ? amount : 0
       balance = roundMoney(balance + income - expense)
@@ -344,12 +380,26 @@ function tenantNameForContract(contractId: string, contracts: TableRow[], tenant
   return [tenant?.apellidos, tenant?.nombres].filter(Boolean).join(', ')
 }
 
+function firstPendingInstallmentId(contractId: string, installments: TableRow[]): string {
+  const installment = installments
+    .filter((row) => String(row.contrato_id) === contractId)
+    .filter((row) => !['pagada', 'anulada'].includes(String(row.estado ?? '')))
+    .sort((left, right) => Number(left.numero_cuota ?? 0) - Number(right.numero_cuota ?? 0))[0]
+  return installment ? String(installment.id) : ''
+}
+
+function installmentLabel(installment: TableRow): string {
+  const number = installment.numero_cuota ? `Cuota ${installment.numero_cuota}` : 'Cuota'
+  const due = installment.fecha_vencimiento ? `vence ${String(installment.fecha_vencimiento).slice(0, 10)}` : 'sin vencimiento'
+  return `${number} · ${due} · saldo ${formatCurrency(numberValue(installment.saldo ?? installment.importe))}`
+}
+
 function contractLabel(contract: TableRow): string {
   return `Contrato ${String(contract.id).slice(0, 8)} · ${String(contract.fecha_inicio ?? 'sin fecha')}`
 }
 
 function movementDate(row: TableRow): string {
-  return String(row.fecha_pago ?? row.created_at ?? '')
+  return String(row.fecha ?? row.fecha_pago ?? row.created_at ?? '')
 }
 
 function firstNumber(row: TableRow, columns: string[]): number {

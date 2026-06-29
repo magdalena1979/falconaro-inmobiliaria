@@ -21,7 +21,10 @@ const mainNavItems: Array<{ key: ModuleKey; label: string }> = [
 ]
 
 const administrationNavItems: Array<{ key: ModuleKey; label: string }> = [
-  { key: 'administration', label: 'Administración' },
+  { key: 'administration', label: 'Resumen de cuenta' },
+  { key: 'cashMovements', label: 'Caja' },
+  { key: 'rentInstallments', label: 'Cuotas' },
+  { key: 'ownerSettlements', label: 'Liquidaciones' },
 ]
 
 const configNavItems: Array<{ key: ModuleKey; label: string }> = [
@@ -31,6 +34,7 @@ const configNavItems: Array<{ key: ModuleKey; label: string }> = [
   { key: 'updateTypes', label: 'Actualizaciones' },
   { key: 'iclIndices', label: 'Índice ICL' },
   { key: 'agencySettings', label: 'Datos y comisión' },
+  { key: 'financialSettings', label: 'Finanzas' },
   { key: 'userRoles', label: 'Usuarios y roles' },
   { key: 'employees', label: 'Empleados' },
 ]

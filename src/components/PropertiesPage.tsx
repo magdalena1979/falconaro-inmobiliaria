@@ -12,6 +12,7 @@ import { RecordForm } from './RecordForm'
 interface PropertiesPageProps {
   module: ModuleDefinition
   ownersModule: ModuleDefinition
+  propertyOwnersModule: ModuleDefinition
 }
 
 type PropertyView =
@@ -20,17 +21,21 @@ type PropertyView =
   | { mode: 'create' }
   | { mode: 'edit'; id: string }
 
-export function PropertiesPage({ module }: PropertiesPageProps) {
+export function PropertiesPage({ module, ownersModule, propertyOwnersModule }: PropertiesPageProps) {
   const [view, setView] = useState<PropertyView>({ mode: 'list' })
   const [search, setSearch] = useState('')
   const [filterColumn, setFilterColumn] = useState('')
   const [filterValue, setFilterValue] = useState('')
   const table = module.table
   const rowsQuery = useTableRows(table)
+  const ownersQuery = useTableRows(ownersModule.table)
+  const propertyOwnersQuery = useTableRows(propertyOwnersModule.table)
   const mutations = useTableMutations(table)
   const referenceOptions = useReferenceOptions(table)
 
   const rows = useMemo(() => rowsQuery.data ?? [], [rowsQuery.data])
+  const owners = useMemo(() => ownersQuery.data ?? [], [ownersQuery.data])
+  const propertyOwnerLinks = useMemo(() => propertyOwnersQuery.data ?? [], [propertyOwnersQuery.data])
   const selectedProperty = useMemo(() => {
     if (view.mode !== 'detail' && view.mode !== 'edit') return undefined
     return rows.find((row) => String(row[table.primaryKey ?? 'id']) === view.id)
@@ -79,6 +84,7 @@ export function PropertiesPage({ module }: PropertiesPageProps) {
     return (
       <PropertyDetailPage
         module={module}
+        ownerLabel={propertyOwnersLabel(selectedProperty, owners, propertyOwnerLinks, referenceOptions)}
         onBack={() => setView({ mode: 'list' })}
         onEdit={() => setView({ mode: 'edit', id: view.id })}
         referenceOptions={referenceOptions}
@@ -286,11 +292,12 @@ interface PropertyDetailPageProps {
   module: ModuleDefinition
   row: TableRow
   referenceOptions: Record<string, Array<{ value: string; label: string }>>
+  ownerLabel: string
   onBack: () => void
   onEdit: () => void
 }
 
-function PropertyDetailPage({ module, row, referenceOptions, onBack, onEdit }: PropertyDetailPageProps) {
+function PropertyDetailPage({ module, row, referenceOptions, ownerLabel, onBack, onEdit }: PropertyDetailPageProps) {
   const columns = module.table.columns.filter((column) => !['id', 'created_at', 'updated_at'].includes(column.name))
   const primary = columns.slice(0, 14)
   const details = columns.slice(14, 38)
@@ -303,9 +310,7 @@ function PropertyDetailPage({ module, row, referenceOptions, onBack, onEdit }: P
           <Typography variant="overline">{module.table.name}</Typography>
           <Typography variant="h4">{propertyTitle(row)}</Typography>
           <Typography variant="body2" color="text.secondary">
-            {formatReferenceValue(row.titulares_ids, referenceOptions.titulares_ids) ??
-              formatReferenceValue(row.propietario_id, referenceOptions.propietario_id) ??
-              'Sin propietarios visibles'}
+            {ownerLabel}
           </Typography>
         </Box>
         <Stack direction="row" spacing={1}>
@@ -390,6 +395,33 @@ function LoadingOrMissing({ isLoading, onBack }: { isLoading: boolean; onBack: (
 function propertyTitle(row: TableRow | undefined): string {
   if (!row) return 'Inmueble'
   return String(row.direccion ?? row.codigo ?? row.id ?? 'Inmueble')
+}
+
+function propertyOwnersLabel(
+  row: TableRow,
+  owners: TableRow[],
+  links: TableRow[],
+  referenceOptions: Record<string, Array<{ value: string; label: string }>>,
+): string {
+  const linkedOwnerIds = links
+    .filter((link) => String(link.propiedad_id) === String(row.id))
+    .sort((left, right) => Number(Boolean(right.principal)) - Number(Boolean(left.principal)))
+    .map((link) => String(link.propietario_id))
+    .filter(Boolean)
+
+  if (linkedOwnerIds.length) {
+    const labels = linkedOwnerIds.map((ownerId) => {
+      const owner = owners.find((candidate) => String(candidate.id) === ownerId)
+      return owner ? [owner.apellidos, owner.nombres].filter(Boolean).join(', ') : ownerId
+    })
+    return labels.join(' / ')
+  }
+
+  return (
+    formatReferenceValue(row.titulares_ids, referenceOptions.titulares_ids) ??
+    formatReferenceValue(row.propietario_id, referenceOptions.propietario_id) ??
+    'Sin propietarios visibles'
+  )
 }
 
 function normalizePayload(row: TableRow, columnNames: string[]): TableRow {

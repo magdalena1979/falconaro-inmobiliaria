@@ -46,6 +46,7 @@ interface ContractsPageProps {
   guarantorsModule: ModuleDefinition
   tenantsModule: ModuleDefinition
   propertiesModule: ModuleDefinition
+  propertyOwnersModule: ModuleDefinition
   propertyTypesModule: ModuleDefinition
   termsModule: ModuleDefinition
   currenciesModule: ModuleDefinition
@@ -171,6 +172,7 @@ export function ContractsPage({
   guarantorsModule,
   tenantsModule,
   propertiesModule,
+  propertyOwnersModule,
   propertyTypesModule,
   termsModule,
   currenciesModule,
@@ -206,6 +208,7 @@ export function ContractsPage({
           guarantorsModule={guarantorsModule}
           tenantsModule={tenantsModule}
           propertiesModule={propertiesModule}
+          propertyOwnersModule={propertyOwnersModule}
           propertyTypesModule={propertyTypesModule}
           termsModule={termsModule}
           currenciesModule={currenciesModule}
@@ -232,6 +235,7 @@ function ContractGenerator({
   guarantorsModule,
   tenantsModule,
   propertiesModule,
+  propertyOwnersModule,
   propertyTypesModule,
   termsModule,
   currenciesModule,
@@ -242,6 +246,7 @@ function ContractGenerator({
   const guarantorsQuery = useTableRows(guarantorsModule.table)
   const tenantsQuery = useTableRows(tenantsModule.table)
   const propertiesQuery = useTableRows(propertiesModule.table)
+  const propertyOwnersQuery = useTableRows(propertyOwnersModule.table)
   const propertyTypesQuery = useTableRows(propertyTypesModule.table)
   const termsQuery = useTableRows(termsModule.table)
   const currenciesQuery = useTableRows(currenciesModule.table)
@@ -273,6 +278,7 @@ function ContractGenerator({
   const guarantors = useMemo(() => guarantorsQuery.data ?? [], [guarantorsQuery.data])
   const tenants = useMemo(() => tenantsQuery.data ?? [], [tenantsQuery.data])
   const properties = useMemo(() => propertiesQuery.data ?? [], [propertiesQuery.data])
+  const propertyOwnerLinks = useMemo(() => propertyOwnersQuery.data ?? [], [propertyOwnersQuery.data])
   const propertyTypes = useMemo(() => propertyTypesQuery.data ?? [], [propertyTypesQuery.data])
   const terms = useMemo(() => termsQuery.data ?? [], [termsQuery.data])
   const currencies = useMemo(() => currenciesQuery.data ?? [], [currenciesQuery.data])
@@ -282,7 +288,7 @@ function ContractGenerator({
   const selectedTenantIds = useWatch({ control, name: 'inquilinoIds' })
   const selectedGuarantorIds = useWatch({ control, name: 'garanteIds' })
   const selectedProperty = properties.find((row) => String(row.id) === selectedPropertyId)
-  const linkedOwnerIds = ownerIdsForProperty(selectedProperty)
+  const linkedOwnerIds = ownerIdsForProperty(selectedProperty, propertyOwnerLinks)
   const linkedOwners = owners.filter((row) => linkedOwnerIds.includes(String(row.id)))
 
   useEffect(() => {
@@ -564,7 +570,7 @@ function ContractGenerator({
 
   function applyProperty(row: TableRow | undefined) {
     if (!row) return
-    const propertyOwnerIds = ownerIdsForProperty(row)
+    const propertyOwnerIds = ownerIdsForProperty(row, propertyOwnerLinks)
     const propertyOwners = owners.filter((owner) => propertyOwnerIds.includes(String(owner.id)))
     setValue('propietarioId', propertyOwnerIds[0] ?? '', { shouldValidate: true })
     setValue('locadorNombre', propertyOwners.map(personLabel).join(' / '))
@@ -850,8 +856,15 @@ function addressLabel(row: TableRow): string {
   return [row.direccion, row.ciudad, row.pais].filter(Boolean).join(', ')
 }
 
-function ownerIdsForProperty(row: TableRow | undefined): string[] {
+function ownerIdsForProperty(row: TableRow | undefined, links: TableRow[]): string[] {
   if (!row) return []
+  const linkedIds = links
+    .filter((link) => String(link.propiedad_id) === String(row.id))
+    .sort((left, right) => Number(Boolean(right.principal)) - Number(Boolean(left.principal)))
+    .map((link) => String(link.propietario_id))
+    .filter(Boolean)
+  if (linkedIds.length) return linkedIds
+
   const rawIds = row.titulares_ids
   if (Array.isArray(rawIds)) return rawIds.map(String)
   if (typeof rawIds === 'string') {

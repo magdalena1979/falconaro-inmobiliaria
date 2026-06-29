@@ -73,12 +73,18 @@ function App() {
           ) : active === 'dashboard' ? (
             <Dashboard modules={modules} />
           ) : active === 'properties' ? (
-            <PropertiesPage module={getModule('properties')} ownersModule={getModule('owners')} />
+            <PropertiesPage
+              module={getModule('properties')}
+              ownersModule={getModule('owners')}
+              propertyOwnersModule={getModule('propertyOwners')}
+            />
           ) : active === 'iclIndices' ? (
             <IclSettingsPage module={getModule('iclIndices')} />
           ) : active === 'administration' ? (
             <AdministrationPage
               contractsModule={getModule('contracts')}
+              installmentsModule={getModule('rentInstallments')}
+              movementsModule={getModule('cashMovements')}
               incomeModule={getModule('payments')}
               propertiesModule={getModule('properties')}
               settingsModule={getModule('agencySettings')}
@@ -95,6 +101,7 @@ function App() {
               guarantorsModule={getModule('guarantors')}
               tenantsModule={getModule('tenants')}
               propertiesModule={getModule('properties')}
+              propertyOwnersModule={getModule('propertyOwners')}
               propertyTypesModule={getModule('propertyTypes')}
               termsModule={getModule('contractTerms')}
               currenciesModule={getModule('currencies')}

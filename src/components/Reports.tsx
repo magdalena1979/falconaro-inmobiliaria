@@ -62,8 +62,8 @@ export function Reports() {
 async function buildReports(): Promise<ReportCard[]> {
   const properties = await rowsFor('properties')
   const contracts = await rowsFor('contracts')
-  const payments = await rowsFor('payments')
-  const ownerCollections = await rowsFor('ownerCollections')
+  const movements = await rowsFor('cashMovements')
+  const ownerSettlements = await rowsFor('ownerSettlements')
 
   return [
     {
@@ -78,8 +78,8 @@ async function buildReports(): Promise<ReportCard[]> {
     },
     {
       title: 'Ingresos por período',
-      value: sumMoney(payments, ['importe', 'cuota_mensual']),
-      helper: 'Suma de pagos registrados',
+      value: sumMoney(movements.filter((row) => row.tipo === 'ingreso'), ['importe']),
+      helper: 'Suma de movimientos de caja tipo ingreso',
     },
     {
       title: 'Comisiones generadas',
@@ -93,8 +93,8 @@ async function buildReports(): Promise<ReportCard[]> {
     },
     {
       title: 'Liquidacion propietario',
-      value: sumMoney(ownerCollections, ['importe']),
-      helper: 'Suma de liquidaciones a propietarios',
+      value: sumMoney(ownerSettlements, ['total_a_transferir']),
+      helper: 'Suma de liquidaciones formales a propietarios',
     },
   ]
 }

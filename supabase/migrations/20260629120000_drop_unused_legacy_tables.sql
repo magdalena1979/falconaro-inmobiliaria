@@ -1,0 +1,8 @@
+-- Esta migracion queda intencionalmente como NO-OP.
+--
+-- El criterio de limpieza cambio: las tablas puente y cuotas vuelven a ser
+-- parte del modelo normalizado V1. No borrar:
+-- contrato_garantes, contrato_inquilinos, contrato_propietarios,
+-- cuotas_alquiler ni liquidaciones_propietario.
+--
+-- La normalizacion real se aplica en la migracion siguiente.
